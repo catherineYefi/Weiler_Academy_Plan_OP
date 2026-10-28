@@ -413,6 +413,15 @@ details[open] summary::after{content:"−"}
 details .inner{padding:0 0 16px;display:grid;gap:8px;font-size:14px;color:var(--muted);max-width:84ch}
 details .inner a{color:var(--gold)}
 footer{font-size:12.5px;color:var(--muted);margin-top:40px}
+[hidden]{display:none!important}
+.funnel3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.funnel3{grid-template-columns:1fr}}
+.funnel3 .fconv span{color:var(--muted);font-size:11.5px}
+.lvl-out .presets .chip{background:transparent;color:var(--band-muted);border-color:var(--band-line)}
+.lvl-out .presets .chip[aria-pressed="true"]{background:var(--band-gold);color:#121019;border-color:var(--band-gold)}
+.ctrl-group>h4 .presets{gap:6px}
+td .sub{display:block;font-size:12px;color:var(--muted);font-weight:400}
+@media (max-width:760px){.cmp2 tr{grid-template-columns:repeat(2,minmax(0,1fr))!important}.cmp2 td.n{white-space:normal}}
 </style>
 
 <div class="tip" id="tip" role="dialog" aria-hidden="true">
@@ -425,14 +434,14 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
 <header class="band">
   <div class="band-in">
     <div style="display:grid;gap:14px;max-width:880px">
-      <p class="eyebrow">Академия Вайлер · отдел продаж · ноябрь–декабрь 2026</p>
+      <p class="eyebrow">Академия Вайлер · продажи и трафик · ноябрь–декабрь 2026</p>
       <h1>План продаж на ноябрь и декабрь</h1>
-      <p class="lede">Где мы сейчас, к каким цифрам идём и почему, какие конверсии нужны, кто за что отвечает и как проходит планёрка по понедельникам.</p>
+      <p class="lede">Где мы сейчас, к каким цифрам идём и почему, сколько нужно лидов и заявок, какие конверсии и сколько трафика, кто за что отвечает и как проходит планёрка по понедельникам.</p>
     </div>
     <div class="hero-lv">
-      <div data-t="h_min"><span class="nm">Минимум</span><b>14<small>в месяц</small></b><span>нижняя граница, ниже не опускаемся</span></div>
-      <div class="main" data-t="h_mid"><span class="nm">Средний <i>рабочий план</i></span><b>18<small>в месяц</small></b><span>4,2 новые продажи «Метода» в неделю</span></div>
-      <div data-t="h_amb"><span class="nm">Амбициозный</span><b>22<small>в месяц</small></b><span>уровень июня, лучшего месяца года</span></div>
+      <div data-t="h_min"><span class="nm">Минимум</span><b>35<small>в месяц</small></b><span>нижняя граница: Академия покрывает все расходы вместе с трафиком</span></div>
+      <div class="main" data-t="h_mid"><span class="nm">Хорошо <i>рабочий план</i></span><b>40<small>в месяц</small></b><span>9,2 новые продажи «Метода» в неделю</span></div>
+      <div data-t="h_amb"><span class="nm">Оптимизм</span><b>50<small>в месяц</small></b><span>запас на развитие и новые запуски</span></div>
     </div>
     <p class="hero-note"><i></i>Пунктир — подсказка: наведите или нажмите, чтобы увидеть, что это, откуда цифра и почему так</p>
   </div>
@@ -442,10 +451,11 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
   <nav class="tabs" role="tablist" aria-label="Разделы плана">
     <button class="tab" role="tab" id="t-now" aria-controls="now" data-tab="now"><span class="n">1</span>Как есть</button>
     <button class="tab" role="tab" id="t-plan" aria-controls="plan" data-tab="plan"><span class="n">2</span>План и почему</button>
-    <button class="tab" role="tab" id="t-target" aria-controls="target" data-tab="target"><span class="n">3</span>Конверсии</button>
-    <button class="tab hot" role="tab" id="t-sim" aria-controls="sim" data-tab="sim"><span class="n">4</span>Симулятор плана</button>
-    <button class="tab" role="tab" id="t-roles" aria-controls="roles" data-tab="roles"><span class="n">5</span>Роли</button>
-    <button class="tab" role="tab" id="t-sync" aria-controls="sync" data-tab="sync"><span class="n">6</span>Планёрка</button>
+    <button class="tab" role="tab" id="t-target" aria-controls="target" data-tab="target"><span class="n">3</span>Воронка и конверсии</button>
+    <button class="tab" role="tab" id="t-mkt" aria-controls="mkt" data-tab="mkt"><span class="n">4</span>Лиды и трафик</button>
+    <button class="tab hot" role="tab" id="t-sim" aria-controls="sim" data-tab="sim"><span class="n">5</span>Симулятор плана</button>
+    <button class="tab" role="tab" id="t-roles" aria-controls="roles" data-tab="roles"><span class="n">6</span>Роли</button>
+    <button class="tab" role="tab" id="t-sync" aria-controls="sync" data-tab="sync"><span class="n">7</span>Планёрка</button>
   </nav>
 </div>
 
@@ -454,40 +464,40 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
 <!-- 1. КАК ЕСТЬ -->
 <div class="panel" id="now" role="tabpanel" aria-labelledby="t-now">
   <section>
-    <p class="thesis">«Метод» продаётся через отдел продаж: так прошли 201 из 213 новых продаж этого года. <em>Сейчас продаж меньше, потому что заявок стало мало, а ответа они ждут слишком долго.</em></p>
+    <p class="thesis">«Метод» продаётся через отдел продаж: так прошли 201 из 213 новых продаж этого года. <em>Сейчас продаж меньше, потому что заявок мало, они ждут ответа слишком долго, а платного трафика почти нет.</em></p>
   </section>
 
   <section>
-    <div class="sec-head"><p class="eyebrow">Продажи</p><h2>С лета новых покупателей «Метода» становится меньше</h2></div>
+    <div class="sec-head"><p class="eyebrow">Продажи</p><h2>План 40 — вдвое больше лучшего месяца года</h2></div>
     <div class="grid2">
       <figure class="fig">
         <div class="fig-head"><h3>Новые покупатели «Метода» по месяцам</h3><span class="src">S · по дате заказа</span></div>
         <div class="vbars">
-          <div class="hline a" style="bottom:calc(18 / 25 * 190px)"><span>план 18</span></div>
-          <div class="hline b" style="bottom:calc(14 / 25 * 190px)"><span>минимум 14</span></div>
-          <div class="vbar" data-t="m_jun"><span class="v">22</span><b style="height:calc(22 / 25 * 190px)"></b></div>
-          <div class="vbar" data-t="m_jul"><span class="v">19</span><b style="height:calc(19 / 25 * 190px)"></b></div>
-          <div class="vbar" data-t="m_aug"><span class="v">15</span><b style="height:calc(15 / 25 * 190px)"></b></div>
-          <div class="vbar" data-t="m_sep"><span class="v">9</span><b style="height:calc(9 / 25 * 190px)"></b></div>
-          <div class="vbar part" data-t="m_oct"><span class="v">3</span><b style="height:calc(3 / 25 * 190px)"></b></div>
+          <div class="hline a" style="bottom:calc(40 / 50 * 190px)"><span>план 40</span></div>
+          <div class="hline b" style="bottom:calc(35 / 50 * 190px)"><span>минимум 35</span></div>
+          <div class="vbar" data-t="m_jun"><span class="v">22</span><b style="height:calc(22 / 50 * 190px)"></b></div>
+          <div class="vbar" data-t="m_jul"><span class="v">19</span><b style="height:calc(19 / 50 * 190px)"></b></div>
+          <div class="vbar" data-t="m_aug"><span class="v">15</span><b style="height:calc(15 / 50 * 190px)"></b></div>
+          <div class="vbar" data-t="m_sep"><span class="v">9</span><b style="height:calc(9 / 50 * 190px)"></b></div>
+          <div class="vbar part" data-t="m_oct"><span class="v">3</span><b style="height:calc(3 / 50 * 190px)"></b></div>
         </div>
         <div class="vlabels"><span>июнь</span><span>июль</span><span>август</span><span>сентябрь</span><span>окт 1–26</span></div>
-        <p class="fig-note">Только новые люди, без повторных покупок выпускников. Летом было 15–22 в месяц: план 18 — уровень, который Академия уже делала.</p>
+        <p class="fig-note">Только новые люди, без повторных покупок выпускников. В среднем за 2026 год — около 21 в месяц. Чтобы выйти на 40, нужен платный трафик и выше конверсии.</p>
       </figure>
       <figure class="fig">
         <div class="fig-head"><h3>Заявки на диагностику в месяц</h3><span class="src">S · GetCourse</span></div>
         <div class="hrows" style="padding-top:20px">
-          <div class="hrow" data-t="l_aug"><span class="l">Август</span><span class="track"><b style="width:calc(188 / 270 * 100%)"></b><span class="mark" style="left:calc(208 / 270 * 100%)"><span>нужно в ноябре 208</span></span></span><span class="v">188</span></div>
-          <div class="hrow" data-t="l_sep"><span class="l">Сентябрь</span><span class="track"><b style="width:calc(247 / 270 * 100%)"></b><span class="mark" style="left:calc(208 / 270 * 100%)"></span></span><span class="v">247</span></div>
-          <div class="hrow" data-t="l_oct"><span class="l">Октябрь<small>1–26, со сбоем</small></span><span class="track"><b class="dash" style="width:calc(50 / 270 * 100%)"></b><span class="mark" style="left:calc(208 / 270 * 100%)"></span></span><span class="v">50</span></div>
+          <div class="hrow" data-t="l_aug"><span class="l">Август</span><span class="track"><b style="width:calc(188 / 270 * 100%)"></b><span class="mark" style="left:calc(239 / 270 * 100%)"><span>нужно для 40: 239</span></span></span><span class="v">188</span></div>
+          <div class="hrow" data-t="l_sep"><span class="l">Сентябрь</span><span class="track"><b style="width:calc(247 / 270 * 100%)"></b><span class="mark" style="left:calc(239 / 270 * 100%)"></span></span><span class="v">247</span></div>
+          <div class="hrow" data-t="l_oct"><span class="l">Октябрь<small>1–26, со сбоем</small></span><span class="track"><b class="dash" style="width:calc(50 / 270 * 100%)"></b><span class="mark" style="left:calc(239 / 270 * 100%)"></span></span><span class="v">50</span></div>
         </div>
-        <p class="fig-note">Золотая черта — сколько заявок нужно для плана 18 при сегодняшних конверсиях. В сентябре столько было. Если поднять конверсии, в декабре хватит ≈130.</p>
+        <p class="fig-note">Дело не только в количестве. В сентябре было 247 заявок, а новых продаж — 9: заявки из ботов и эфиров покупают реже, чем заявки с подкастов. Для 40 нужно ≈239 заявок, из них ≈183 — с подкастов и таргета.</p>
       </figure>
     </div>
   </section>
 
   <section>
-    <div class="sec-head"><p class="eyebrow">Скорость ответа</p><h2>Главная зона роста — как быстро мы отвечаем</h2></div>
+    <div class="sec-head"><p class="eyebrow">Скорость ответа</p><h2>Главная зона роста в продажах — как быстро мы отвечаем</h2></div>
     <figure class="fig">
       <div class="fig-head"><h3>Первое касание после передачи заявки менеджеру</h3><span class="src">A · amoCRM</span></div>
       <div class="stack">
@@ -509,7 +519,7 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
         </div></div>
       </div>
       <div class="key"><span><i style="background:var(--c1)"></i>до 15 минут</span><span><i style="background:var(--c3)"></i>15–60 минут</span><span><i style="background:var(--c4)"></i>1–4 часа</span><span><i style="background:var(--soft);border:1px solid var(--line)"></i>в тот же день</span><span><i style="background:var(--risk-soft)"></i>позже</span><span><i style="background:var(--risk)"></i>без касания</span></div>
-      <p class="fig-note">Заявка «остывает» за минуты. По исследованиям продаж, ответ в первые 5 минут вместо 30 в разы чаще доводит человека до разговора.</p>
+      <p class="fig-note">Заявка «остывает» за минуты. По исследованиям продаж, ответ в первые 5 минут вместо 30 в разы чаще доводит человека до разговора. Платная заявка стоит ≈14 тысяч рублей — терять её особенно дорого.</p>
     </figure>
   </section>
 
@@ -517,9 +527,9 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     <div class="sec-head"><p class="eyebrow">Что уже работает</p><h2>Есть на что опереться</h2></div>
     <div class="tiles">
       <div class="tile" data-t="w_op"><div class="big gold">201<small>из 213</small></div><p>новых продаж «Метода» в 2026 году сделал отдел продаж. Без менеджеров «Метод» почти не покупают.</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">S</span></div></div>
+      <div class="tile" data-t="w_pod"><div class="big">18%</div><p>заявок с подкастов заканчиваются покупкой «Метода». Подкасты-хиты окупаются в 5 раз.</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">таблица эфиров · 77 из 423</span></div></div>
       <div class="tile" data-t="w_ks"><div class="big">12,9%</div><p>покупателей «Кода сознания» за 90 дней переходят в «Метод». Это в 3–4 раза чаще, чем после «Перепрошивки».</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">S</span></div></div>
-      <div class="tile" data-t="w_72"><div class="big">10,4%</div><p>переходят из КС в «Метод» по офферу «Метод минус стоимость КС» за 72 часа. Оффер работает.</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">S · 7 из 67</span></div></div>
-      <div class="tile" data-t="w_group"><div class="big">25<small>в месяц</small></div><p>покупателей в группе КС: 27, 20 и 23 в августе–октябре. Это стабильный второй путь в «Метод».</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">S</span></div></div>
+      <div class="tile" data-t="w_mk"><div class="big">23<small>из 118</small></div><p>участников живого мастер-класса Лены 3 октября купили за 30 дней — в основном «Код сознания». Это 96% денег всех эфиров месяца.</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">Бизон</span></div></div>
     </div>
   </section>
 
@@ -529,7 +539,7 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
       <div class="fig-head"><h3>Покупатели 11-го потока на 26 октября и ориентир 28</h3><span class="src">S</span></div>
       <div class="cells" id="cells" role="img" aria-label="18 покупателей: 15 выпускников и 3 новых; до 28 не хватает 10"></div>
       <div class="key"><span><i style="background:var(--c4)"></i>15 выпускников</span><span><i style="background:var(--c1)"></i>3 новых</span><span><i style="background:var(--gold-soft);border:1.5px dashed var(--gold-fill)"></i>10 мест до 28, как в 10-м потоке</span></div>
-      <p class="fig-note">У 8-го и 9-го потоков за месяц до старта было 2 и 0 покупателей: почти всё продавалось в последние недели. Для 11-го потока это ноябрь, и в нём нужно примерно 10 новых человек.</p>
+      <p class="fig-note">У 8-го и 9-го потоков за месяц до старта было 2 и 0 покупателей: почти всё продавалось в последние недели. Для 11-го потока это ноябрь.</p>
     </figure>
   </section>
 
@@ -539,50 +549,90 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
 <!-- 2. ПЛАН -->
 <div class="panel" id="plan" role="tabpanel" aria-labelledby="t-plan" hidden>
   <section>
-    <p class="thesis">Рабочий план — <em>18 новых продаж «Метода» в месяц</em>, 4,2 в неделю. 14 — граница, ниже которой не опускаемся. 22 — амбиция: столько было в июне.</p>
+    <p class="thesis">Рабочий план — <em>40 новых продаж «Метода» в месяц</em>, 9,2 в неделю. 35 — граница, ниже которой не опускаемся. 50 — запас на развитие.</p>
   </section>
 
   <section>
     <div class="sec-head"><p class="eyebrow">Три уровня</p><h2>Выберите уровень и посмотрите, что он требует</h2><p class="lede">Повторные покупки выпускников считаются отдельно и в план не входят.</p></div>
     <div class="levels" role="radiogroup" aria-label="Уровень плана">
-      <button class="lvl" role="radio" aria-checked="false" data-l="0"><div class="top"><span class="name">Минимум</span></div><div class="big">14<small>в месяц</small></div><p>Академия уверенно покрывает все расходы. Между августом (15) и сентябрём (9).</p></button>
-      <button class="lvl" role="radio" aria-checked="true" data-l="1"><div class="top"><span class="name">Средний</span><span class="badge">рабочий план</span></div><div class="big">18<small>в месяц</small></div><p>Расходы покрыты с запасом, ничего не горит. Уровень июля (19).</p></button>
-      <button class="lvl" role="radio" aria-checked="false" data-l="2"><div class="top"><span class="name">Амбициозный</span></div><div class="big">22<small>в месяц</small></div><p>Рост и резерв на новые запуски. Уровень июня (22).</p></button>
+      <button class="lvl" role="radio" aria-checked="false" data-l="0"><div class="top"><span class="name">Минимум</span></div><div class="big">35<small>в месяц</small></div><p>Академия покрывает все расходы вместе с трафиком. Запас появляется, когда растут конверсии.</p></button>
+      <button class="lvl" role="radio" aria-checked="true" data-l="1"><div class="top"><span class="name">Хорошо</span><span class="badge">рабочий план</span></div><div class="big">40<small>в месяц</small></div><p>Расходы и трафик покрыты с запасом при любой окупаемости трафика, которую мы видели в 2026 году.</p></button>
+      <button class="lvl" role="radio" aria-checked="false" data-l="2"><div class="top"><span class="name">Оптимизм</span></div><div class="big">50<small>в месяц</small></div><p>Резерв на налоги, подушку и новые запуски.</p></button>
     </div>
     <div class="lvl-out" aria-live="polite">
-      <p class="eyebrow" id="lvName">Уровень «Средний» · что нужно в месяц</p>
-      <div class="lvl-grid">
-        <div data-t="o_week"><b id="o1" class="g">4,2</b><span>новые продажи «Метода» в неделю</span></div>
-        <div data-t="o_nov"><b id="o2">208</b><span id="o2s">заявок в ноябре · 48 в неделю</span></div>
-        <div data-t="o_dec"><b id="o3">129</b><span id="o3s">заявок в декабре · 30 в неделю</span></div>
-        <div data-t="o_rev"><b id="o4">3,77</b><span>млн ₽ продаж «Метода» в месяц</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <p class="eyebrow" id="lvName">Уровень «Хорошо» · что нужно в неделю</p>
+        <div class="presets" role="group" aria-label="Конверсии">
+          <button class="chip" type="button" data-cv="0" aria-pressed="true">Сегодняшние конверсии</button>
+          <button class="chip" type="button" data-cv="1" aria-pressed="false">Целевые</button>
+        </div>
       </div>
-      <p class="note"><b>Ноябрь</b> считаем по сегодняшним конверсиям, <b>декабрь</b> — по целевым. Разница в заявках — это эффект от роста конверсий.</p>
+      <div class="lvl-grid">
+        <div data-t="o_week"><b id="o1" class="g">9,2</b><span>новые продажи «Метода» в неделю</span></div>
+        <div data-t="o_leads"><b id="o2">701</b><span id="o2s">лид с подкастов и таргета в неделю</span></div>
+        <div data-t="o_apps"><b id="o3">55</b><span id="o3s">заявок на диагностику в неделю</span></div>
+        <div data-t="o_mkt"><b id="o4">2,62</b><span id="o4s">млн ₽ на трафик в месяц</span></div>
+      </div>
+      <p class="note" id="o_note"><b>Сегодняшние конверсии</b> — так считаем ноябрь. <b>Целевые</b> — декабрь: разница в лидах и деньгах — это эффект от роста конверсий.</p>
     </div>
+  </section>
+
+
+  <section>
+    <div class="sec-head"><p class="eyebrow">Сейчас → цель</p><h2>Что нужно для 40 продаж: сегодня и когда выйдем на цели</h2><p class="lede">Слева — при сегодняшних конверсиях, так считаем ноябрь и бюджет. Справа — при целевых, к ним идём к декабрю. Свои цифры можно подставить в симуляторе.</p></div>
+    <div class="tbl-wrap resp cmp2">
+      <table>
+        <thead><tr><th>Показатель</th><th class="n">Сейчас</th><th class="n">Цель</th><th>Что меняется</th></tr></thead>
+        <tbody>
+          <tr><td class="w" colspan="4"><b>Конверсии</b></td></tr>
+          <tr data-t="r_l2a"><td class="w">Лид → заявка</td><td data-label="Сейчас" class="n">6%</td><td data-label="Цель" class="n goal">8%</td><td data-label="Что" class="wide">звать на диагностику на 40–45-й минуте эфира, дожим в боте</td></tr>
+          <tr data-t="r_diag"><td class="w">Заявка → проведённая диагностика</td><td data-label="Сейчас" class="n">не меряем</td><td data-label="Цель" class="n goal">45%</td><td data-label="Что" class="wide">ответ за 15 минут, напоминания</td></tr>
+          <tr data-t="r_close"><td class="w">Диагностика → «Метод»</td><td data-label="Сейчас" class="n">не меряем</td><td data-label="Цель" class="n goal">35%</td><td data-label="Что" class="wide">сильная диагностика, разбор звонков</td></tr>
+          <tr data-t="r_conv"><td class="w">Заявка из ботов и эфиров → «Метод»</td><td data-label="Сейчас" class="n">7,4%</td><td data-label="Цель" class="n goal">≈16%</td><td data-label="Что" class="wide">45% × 35%</td></tr>
+          <tr data-t="r_pod"><td class="w">Заявка с подкастов и таргета → «Метод»</td><td data-label="Сейчас" class="n">18%</td><td data-label="Цель" class="n goal">30%</td><td data-label="Что" class="wide">то же правило ответа и диагностики</td></tr>
+          <tr data-t="r_e2e"><td class="w">Сквозная: лид → «Метод»</td><td data-label="Сейчас" class="n">1,1%</td><td data-label="Цель" class="n goal">2,4%</td><td data-label="Что" class="wide">лидов на одну продажу: 91 → 42</td></tr>
+          <tr data-t="r_ks"><td class="w">Покупатели группы КС · КС → «Метод»</td><td data-label="Сейчас" class="n">25 · 10,4%</td><td data-label="Цель" class="n goal">35 · 18%</td><td data-label="Что" class="wide">живой МК Лены перед каждой группой, оффер 72 часа</td></tr>
+          <tr data-t="c_lead"><td class="w">Цена лида · цена заявки</td><td data-label="Сейчас" class="n">863 · 14&nbsp;340 ₽</td><td data-label="Цель" class="n goal">750 · ≈9&nbsp;400 ₽</td><td data-label="Что" class="wide">больше подкастов-хитов в смеси</td></tr>
+          <tr><td class="w" colspan="4"><b>Что нужно в неделю</b></td></tr>
+          <tr data-t="w_lpaid"><td class="w">Лиды с подкастов и таргета</td><td data-label="Сейчас" class="n">701</td><td data-label="Цель" class="n goal">239</td><td data-label="Что" class="wide">в 2,9 раза меньше</td></tr>
+          <tr data-t="w_apaid"><td class="w">Заявки с трафика</td><td data-label="Сейчас" class="n">42</td><td data-label="Цель" class="n goal">19</td><td data-label="Что" class="wide">остальные продажи дают боты, эфиры и КС</td></tr>
+          <tr><td class="w">Заявки всего</td><td data-label="Сейчас" class="n">55</td><td data-label="Цель" class="n goal">32</td><td data-label="Что" class="wide">в т.ч. 13 из ботов и эфиров</td></tr>
+          <tr data-t="w_diag"><td class="w">Проведённые диагностики</td><td data-label="Сейчас" class="n">меряем</td><td data-label="Цель" class="n goal">≈14</td><td data-label="Что" class="wide">≈63 в месяц, меньше одной в день на наставника</td></tr>
+          <tr data-t="w_new"><td class="w">Новые продажи «Метода»</td><td data-label="Сейчас" class="n">9,2</td><td data-label="Цель" class="n goal">9,2</td><td data-label="Что" class="wide">план тот же — меняется цена</td></tr>
+          <tr><td class="w" colspan="4"><b>Трафик в месяц</b></td></tr>
+          <tr data-t="o_mkt"><td class="w">Бюджет на трафик</td><td data-label="Сейчас" class="n">2,62 млн ₽</td><td data-label="Цель" class="n goal">0,78 млн ₽</td><td data-label="Что" class="wide">в 3,4 раза меньше</td></tr>
+          <tr data-t="x_share"><td class="w">Доля трафика в поступлениях</td><td data-label="Сейчас" class="n">35%</td><td data-label="Цель" class="n goal">10%</td><td data-label="Что" class="wide">ориентир — до 15–18%</td></tr>
+          <tr data-t="x_cps"><td class="w">Трафик на одну продажу с трафика</td><td data-label="Сейчас" class="n">78,8 тыс. ₽</td><td data-label="Цель" class="n goal">31,3 тыс. ₽</td><td data-label="Что" class="wide">ориентир — до 50 тысяч</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fig-note">Бюджет закладываем по сегодняшним конверсиям: если цели выполнятся раньше, деньги останутся в запасе. С декабря бюджет пересчитываем по факту ноября.</p>
   </section>
 
   <section>
     <div class="sec-head"><p class="eyebrow">Почему такие цифры</p><h2>Пять причин</h2></div>
     <ul class="findings">
-      <li><span class="tag t-fact">Факт</span><p><b>18 уже было.</b> Июнь — 22, июль — 19, август — 15. План — возврат к летнему уровню. <span class="src">S</span></p></li>
-      <li><span class="tag t-fact">Факт</span><p><b>14 — нижняя граница.</b> При ней Академия покрывает все текущие расходы с запасом. Ниже начинаем тратить резерв. <span class="src">финмодель</span></p></li>
-      <li><span class="tag t-fact">Факт</span><p><b>18 даёт устойчивость.</b> Расходы покрыты, и остаётся резерв, чтобы следующий месяц не начинался с нуля. <span class="src">финмодель</span></p></li>
-      <li><span class="tag t-fact">Факт</span><p><b>Всё решают заявки и конверсии.</b> При сегодняшних 7,4% для 18 продаж нужно ≈208 заявок, при целевых 10,5% — ≈129. <span class="src">S</span></p></li>
-      <li><span class="tag t-hyp">Гипотеза</span><p><b>Поток заявок в декабре не снижаем.</b> Тогда при целевых конверсиях декабрь выходит к амбициозному уровню. <span class="src">расчёт</span></p></li>
+      <li><span class="tag t-fact">Факт</span><p><b>40 — уровень, при котором всё сходится.</b> Академия покрывает команду, трафик и налоги, и остаётся запас — даже если трафик окупается так же слабо, как в среднем в 2026 году. <span class="src">финмодель</span></p></li>
+      <li><span class="tag t-fact">Факт</span><p><b>Без трафика сейчас ≈7 продаж в месяц.</b> Около 4 дают заявки из ботов, эфиров и рассылок, около 2,6 — переходы из «Кода сознания». Остальные 33 нужно привести с подкастов и таргета. <span class="src">S</span></p></li>
+      <li><span class="tag t-fact">Факт</span><p><b>Заявки с подкастов покупают чаще.</b> 18% против 7,4% у всех заявок. Поэтому главный источник плана — подкасты-хиты, а не количество любых заявок. <span class="src">таблица эфиров, S</span></p></li>
+      <li><span class="tag t-fact">Факт</span><p><b>Конверсии экономят трафик.</b> При целевых конверсиях для 40 продаж нужно 239 лидов в неделю вместо 701, а трафик — ≈0,8 млн ₽ в месяц вместо 2,6. <span class="src">расчёт</span></p></li>
+      <li><span class="tag t-hyp">Гипотеза</span><p><b>18% подтвердится на данных 2026 года.</b> Цифра из таблицы эфиров считает покупки без ограничения по сроку. Зиннур пересчитывает её за 90 дней по меткам до 2 ноября; если она ниже, план трафика пересчитываем. <span class="src">проверка</span></p></li>
     </ul>
   </section>
 
   <section>
-    <div class="sec-head"><p class="eyebrow">План на неделю</p><h2>Что должно получаться каждую неделю</h2><p class="lede">Для рабочего плана 18. Эти цифры стоят в таблице планёрки.</p></div>
+    <div class="sec-head"><p class="eyebrow">План на неделю</p><h2>Что должно получаться каждую неделю</h2><p class="lede">Для рабочего плана 40. Ноябрь — по сегодняшним конверсиям, декабрь — по целевым. Эти цифры стоят в таблице планёрки.</p></div>
     <div class="tbl-wrap resp">
       <table>
         <thead><tr><th>Показатель</th><th class="n">Ноябрь, в неделю</th><th class="n">Декабрь, в неделю</th><th>Чья цифра</th></tr></thead>
         <tbody>
-          <tr data-t="w_leads"><td class="w"><b>Заявки на диагностику</b></td><td data-label="Ноябрь" class="n">48</td><td data-label="Декабрь" class="n">48<span class="sub">минимум 30</span></td><td data-label="Чья">Миша</td></tr>
-          <tr data-t="w_new"><td class="w"><b>Новые продажи «Метода»</b></td><td data-label="Ноябрь" class="n">4,2</td><td data-label="Декабрь" class="n">4,2</td><td data-label="Чья">Арина</td></tr>
-          <tr data-t="w_ks1"><td class="w"><b>Продажи «Кода сознания»</b></td><td data-label="Ноябрь" class="n">5,8</td><td data-label="Декабрь" class="n">6,9</td><td data-label="Чья">Арина</td></tr>
-          <tr data-t="w_ks2"><td class="w"><b>Переходы КС → «Метод»</b></td><td data-label="Ноябрь" class="n">0,6</td><td data-label="Декабрь" class="n">1,0</td><td data-label="Чья">Арина</td></tr>
-          <tr data-t="w_diag"><td class="w"><b>Проведённые диагностики</b></td><td data-label="Ноябрь" class="n">меряем</td><td data-label="Декабрь" class="n">≈10<span class="sub">45 в месяц</span></td><td data-label="Чья">Зинур</td></tr>
+          <tr data-t="w_lpaid"><td class="w"><b>Лиды с подкастов и таргета</b></td><td data-label="Ноябрь" class="n">701</td><td data-label="Декабрь" class="n">239</td><td data-label="Чья">Лена · учёт — Зарина</td></tr>
+          <tr data-t="w_apaid"><td class="w"><b>Заявки с подкастов и таргета</b></td><td data-label="Ноябрь" class="n">42</td><td data-label="Декабрь" class="n">19</td><td data-label="Чья">Лена · учёт — Зиннур</td></tr>
+          <tr data-t="w_abase"><td class="w"><b>Заявки из ботов, эфиров и рассылок</b></td><td data-label="Ноябрь" class="n">13</td><td data-label="Декабрь" class="n">13</td><td data-label="Чья">Миша</td></tr>
+          <tr data-t="w_diag"><td class="w"><b>Проведённые диагностики</b></td><td data-label="Ноябрь" class="n">меряем</td><td data-label="Декабрь" class="n">≈14<span class="sub">63 в месяц</span></td><td data-label="Чья">Арина</td></tr>
+          <tr data-t="w_new"><td class="w"><b>Новые продажи «Метода»</b></td><td data-label="Ноябрь" class="n">9,2</td><td data-label="Декабрь" class="n">9,2</td><td data-label="Чья">Арина</td></tr>
+          <tr data-t="w_ks1"><td class="w"><b>Продажи «Кода сознания»</b></td><td data-label="Ноябрь" class="n">5,8</td><td data-label="Декабрь" class="n">8,1</td><td data-label="Чья">Арина</td></tr>
+          <tr data-t="w_ks2"><td class="w"><b>Переходы КС → «Метод»</b></td><td data-label="Ноябрь" class="n">0,6</td><td data-label="Декабрь" class="n">1,5</td><td data-label="Чья">Арина</td></tr>
         </tbody>
       </table>
     </div>
@@ -592,51 +642,59 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     <div class="sec-head"><p class="eyebrow">Календарь</p><h2>Ноябрь и декабрь</h2></div>
     <div class="grid2">
       <div class="cal">
-        <div class="ev sync"><span class="d">пн 2.11</span><div><b>Планёрка: старт плана</b><p>Утверждаем уровни, разбивку по менеджерам, правило ответа и формат планёрки. В amoCRM появляется этап «Диагностика проведена».</p></div></div>
-        <div class="ev"><span class="d">вт 3.11</span><div><b>«Перепрошивка 2.0»: живой запуск</b><p>Дальше — ежедневные автостарты. Источник заявок на ноябрь.</p></div></div>
+        <div class="ev sync"><span class="d">пн 2.11</span><div><b>Планёрка: старт плана</b><p>Уровни 35 / 40 / 50, роли, план трафика на ноябрь, формат планёрки. В amoCRM появляется этап «Диагностика проведена».</p></div></div>
+        <div class="ev"><span class="d">вт 3.11</span><div><b>«Перепрошивка 2.0»: живой запуск</b><p>Дальше — ежедневные автостарты. Источник заявок из ботов и эфиров.</p></div></div>
+        <div class="ev key"><span class="d">ноябрь</span><div><b>Выходят три записанных подкаста</b><p>В день выхода — дежурство на заявки: ответ в первые 15 минут. У каждого эфира своя метка и промокод.</p></div></div>
         <div class="ev sync"><span class="d">пн 9.11</span><div><b>Первый план-факт</b><p>Неделя 2–8 ноября в новой таблице.</p></div></div>
         <div class="ev key"><span class="d">пт 13.11</span><div><b>«Чёрная пятница»</b><p>Условия уточняются.</p></div></div>
-        <div class="ev"><span class="d">ноябрь</span><div><b>Группа «Кода сознания»</b><p>Дата уточняется.</p></div></div>
+        <div class="ev"><span class="d">ноябрь</span><div><b>Живой мастер-класс Лены → группа «Кода сознания»</b><p>Даты уточняются. Живой МК перед группой — главный источник покупателей КС.</p></div></div>
         <div class="ev key"><span class="d">сб 28.11</span><div><b>Старт 11-го потока</b><p>Основные продажи потока — в последние 2–3 недели до старта.</p></div></div>
       </div>
       <div class="cal">
         <div class="ev sync"><span class="d">пн 30.11</span><div><b>Итог ноября и цели по диагностикам</b><p>За 4 недели измерили, сколько диагностик проводится и сколько из них заканчиваются покупкой. Уточняем целевые конверсии.</p></div></div>
-        <div class="ev"><span class="d">декабрь</span><div><b>Продажи 12-го потока</b><p>Те, кто не успел в 11-й поток, и новые заявки. Старт 12-го — в январе.</p></div></div>
-        <div class="ev"><span class="d">пт 25.12</span><div><b>Итоги двух месяцев</b><p>План и факт по продажам и конверсиям.</p></div></div>
+        <div class="ev"><span class="d">ноябрь–декабрь</span><div><b>Цена заявки по каждому эфиру</b><p>Через 3–4 недели после выхода: до 10 тысяч — повторяем площадку, дороже 25 тысяч — не повторяем.</p></div></div>
+        <div class="ev"><span class="d">декабрь</span><div><b>Продажи 12-го потока и бронь подкастов на январь</b><p>Те, кто не успел в 11-й поток, и новые заявки. Площадки — по правилу «стоп или повтор».</p></div></div>
+        <div class="ev"><span class="d">пт 25.12</span><div><b>Итоги двух месяцев</b><p>План и факт по продажам, лидам, заявкам и конверсиям.</p></div></div>
         <div class="ev sync"><span class="d">пн 28.12</span><div><b>Последняя планёрка года</b><p>Неделя 21–27 декабря и план на январь.</p></div></div>
       </div>
     </div>
   </section>
 
-  <div class="next-tab"><span class="small">Дальше: какие конверсии нужны</span><button class="btn" type="button" data-go="target">Конверсии →</button></div>
+  <div class="next-tab"><span class="small">Дальше: воронка и конверсии</span><button class="btn" type="button" data-go="target">Воронка и конверсии →</button></div>
 </div>
 
-<!-- 3. КОНВЕРСИИ -->
+<!-- 3. ВОРОНКА И КОНВЕРСИИ -->
 <div class="panel" id="target" role="tabpanel" aria-labelledby="t-target" hidden>
   <section>
-    <p class="thesis">Чтобы выполнять план без бесконечного роста заявок, поднимаем конверсии: <em>заявка → «Метод» с 7,4% до 10,5% к декабрю</em>, переход из КС — с 10,4% до 15%.</p>
+    <p class="thesis">Продажи приходят тремя путями. Чтобы выполнять план без бесконечного роста трафика, поднимаем конверсии: <em>лид → заявка с 6% до 8%, заявка → «Метод» с 7,4% до ≈16%</em>, заявка с подкастов — с 18% до 30%, КС — 35 покупателей и 18% переходов.</p>
   </section>
 
   <section>
-    <div class="sec-head"><p class="eyebrow">Воронка декабря</p><h2>Как складываются 18 продаж при целевых конверсиях</h2></div>
-    <div class="funnel">
+    <div class="sec-head"><p class="eyebrow">Воронка декабря</p><h2>Как складываются 40 продаж при целевых конверсиях</h2></div>
+    <div class="funnel funnel3">
       <div class="fpath">
-        <h4>Путь 1 · диагностика</h4>
-        <div class="fstep" data-t="f_leads"><b>Заявки на диагностику</b><span class="v">129</span><small>≈30 в неделю — минимум; держим 48</small></div>
-        <div class="fconv">ответ каждой заявке · <b>80% за 15 минут</b></div>
-        <div class="fstep" data-t="f_touch"><b>Заявка получила ответ</b><span class="v">129</span><small>ни одной заявки без ответа</small></div>
-        <div class="fconv">заявка → проведённая диагностика · <b>35%</b></div>
-        <div class="fstep" data-t="f_diag"><b>Проведённые диагностики</b><span class="v">45</span><small>≈10 в неделю на весь отдел</small></div>
-        <div class="fconv">диагностика → «Метод» · <b>30%</b></div>
-        <div class="fstep end" data-t="f_m1"><b>Новые продажи «Метода»</b><span class="v">13,5</span><small>45 × 30%</small></div>
+        <h4>Путь 1 · подкасты и таргет</h4>
+        <div class="fstep" data-t="f_lpaid"><b>Лиды</b><span class="v">1&nbsp;037</span><small>≈240 в неделю · регистрации с меткой</small></div>
+        <div class="fconv">лид → заявка · <b>8%</b> <span>сейчас 6%</span></div>
+        <div class="fstep" data-t="f_apaid"><b>Заявки на диагностику</b><span class="v">83</span><small>≈19 в неделю</small></div>
+        <div class="fconv">заявка → «Метод» · <b>30%</b> <span>сейчас 18%</span></div>
+        <div class="fstep end" data-t="f_mpaid"><b>Новые продажи «Метода»</b><span class="v">24,9</span><small>сквозная: лид → «Метод» 2,4% (сейчас 1,1%)</small></div>
       </div>
       <div class="fpath">
-        <h4>Путь 2 · «Код сознания»</h4>
-        <div class="fstep" data-t="f_ks"><b>Покупатели группы КС</b><span class="v">30</span><small>≈6,9 в неделю</small></div>
-        <div class="fconv">оффер 72 часа · <b>15%</b></div>
-        <div class="fstep end" data-t="f_m2"><b>Переходы в «Метод»</b><span class="v">4,5</span><small>≈1 в неделю</small></div>
+        <h4>Путь 2 · боты, эфиры, рассылки</h4>
+        <div class="fstep" data-t="f_abase"><b>Заявки на диагностику</b><span class="v">56</span><small>≈13 в неделю, без затрат на трафик</small></div>
+        <div class="fconv">заявка → проведённая диагностика · <b>45%</b></div>
+        <div class="fstep" data-t="f_dbase"><b>Проведённые диагностики</b><span class="v">25</span><small>ответ каждой заявке, 80% — за 15 минут</small></div>
+        <div class="fconv">диагностика → «Метод» · <b>35%</b></div>
+        <div class="fstep end" data-t="f_mbase"><b>Новые продажи «Метода»</b><span class="v">8,8</span><small>сквозная: заявка → «Метод» ≈16% (сейчас 7,4%)</small></div>
       </div>
-      <div class="ftotal" data-t="f_total"><span>Итого новых продаж «Метода» в месяц</span><b>18</b></div>
+      <div class="fpath">
+        <h4>Путь 3 · «Код сознания»</h4>
+        <div class="fstep" data-t="f_ks"><b>Покупатели группы КС</b><span class="v">35</span><small>≈8 в неделю · после живого МК Лены</small></div>
+        <div class="fconv">оффер 72 часа · <b>18%</b> <span>сейчас 10,4%</span></div>
+        <div class="fstep end" data-t="f_m2"><b>Переходы в «Метод»</b><span class="v">6,3</span><small>≈1,5 в неделю</small></div>
+      </div>
+      <div class="ftotal" data-t="f_total"><span>Итого новых продаж «Метода» в месяц · проведённых диагностик ≈63</span><b>40</b></div>
     </div>
   </section>
 
@@ -644,74 +702,194 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     <div class="sec-head"><p class="eyebrow">Цели</p><h2>Сейчас → ноябрь → декабрь</h2><p class="lede">Ориентиры рынка взяты из открытых кейсов практиков. Это ориентиры, а не отраслевой стандарт. Свою базу по диагностикам измеряем 4 недели, 30 ноября уточняем цели.</p></div>
     <div class="tbl-wrap resp">
       <table>
-        <thead><tr><th>Показатель</th><th class="n">Сейчас</th><th class="n">Ноябрь</th><th class="n">Декабрь</th><th>Ориентир рынка</th><th>Чья цифра</th></tr></thead>
+        <thead><tr><th>Показатель</th><th class="n">Сейчас</th><th class="n">Ноябрь</th><th class="n">Декабрь</th><th>Ориентир</th><th>Чья цифра</th></tr></thead>
         <tbody>
+          <tr data-t="r_l2a"><td class="w"><b>Лид → заявка на диагностику</b></td><td data-label="Сейчас" class="n">6%</td><td data-label="Ноябрь" class="n">6%</td><td data-label="Декабрь" class="n goal">8%</td><td data-label="Ориентир" class="ref wide">своя история: 6%; из пришедших на эфир заявку оставляют 28%</td><td data-label="Чья" class="wide">Лена, Миша · считает Зиннур</td></tr>
           <tr data-t="r_none"><td class="w"><b>Заявки без ответа</b></td><td data-label="Сейчас" class="n">23–37%</td><td data-label="Ноябрь" class="n goal">0%</td><td data-label="Декабрь" class="n goal">0%</td><td data-label="Ориентир" class="ref wide">каждая заявка получает ответ</td><td data-label="Чья" class="wide">Арина</td></tr>
           <tr data-t="r_15"><td class="w"><b>Ответ в первые 15 минут</b></td><td data-label="Сейчас" class="n">≈7%</td><td data-label="Ноябрь" class="n goal">50%</td><td data-label="Декабрь" class="n goal">80%</td><td data-label="Ориентир" class="ref wide">ответ за 5 минут вместо 30 — в 21 раз чаще удаётся довести заявку до разговора</td><td data-label="Чья" class="wide">Арина</td></tr>
-          <tr data-t="r_diag"><td class="w"><b>Заявка → проведённая диагностика</b></td><td data-label="Сейчас" class="n">не видно</td><td data-label="Ноябрь" class="n">меряем</td><td data-label="Декабрь" class="n goal">35%</td><td data-label="Ориентир" class="ref wide">записались → пришли: от 68%; в кейсе GetCourse заявка → диагностика выросла с 9% до 22% за 2 месяца</td><td data-label="Чья" class="wide">Зинур</td></tr>
-          <tr data-t="r_close"><td class="w"><b>Диагностика → «Метод»</b></td><td data-label="Сейчас" class="n">не видно</td><td data-label="Ноябрь" class="n">меряем</td><td data-label="Декабрь" class="n goal">30%</td><td data-label="Ориентир" class="ref wide">30–50% при сильной диагностике</td><td data-label="Чья" class="wide">Арина</td></tr>
-          <tr data-t="r_conv"><td class="w"><b>Заявка → «Метод» за 90 дней</b></td><td data-label="Сейчас" class="n">7,4%</td><td data-label="Ноябрь" class="n">7,4%</td><td data-label="Декабрь" class="n goal">10,5%</td><td data-label="Ориентир" class="ref wide">35% × 30%</td><td data-label="Чья" class="wide">Арина</td></tr>
-          <tr data-t="r_ks"><td class="w"><b>Покупатели группы КС</b></td><td data-label="Сейчас" class="n">20–27</td><td data-label="Ноябрь" class="n">25</td><td data-label="Декабрь" class="n goal">30</td><td data-label="Ориентир" class="ref wide">своя история: 27 в августе</td><td data-label="Чья" class="wide">Арина</td></tr>
-          <tr data-t="r_ks72"><td class="w"><b>КС → «Метод»</b></td><td data-label="Сейчас" class="n">10,4%</td><td data-label="Ноябрь" class="n">10,4%</td><td data-label="Декабрь" class="n goal">15%</td><td data-label="Ориентир" class="ref wide">своя история: за 90 дней переходят 12,9%</td><td data-label="Чья" class="wide">Арина</td></tr>
+          <tr data-t="r_diag"><td class="w"><b>Заявка → проведённая диагностика</b></td><td data-label="Сейчас" class="n">не видно</td><td data-label="Ноябрь" class="n">меряем</td><td data-label="Декабрь" class="n goal">45%</td><td data-label="Ориентир" class="ref wide">записались → пришли: от 68%; в кейсе GetCourse заявка → диагностика выросла с 9% до 22% за 2 месяца</td><td data-label="Чья" class="wide">Арина · этап настраивает Зиннур</td></tr>
+          <tr data-t="r_close"><td class="w"><b>Диагностика → «Метод»</b></td><td data-label="Сейчас" class="n">не видно</td><td data-label="Ноябрь" class="n">меряем</td><td data-label="Декабрь" class="n goal">35%</td><td data-label="Ориентир" class="ref wide">30–50% при сильной диагностике</td><td data-label="Чья" class="wide">Арина</td></tr>
+          <tr data-t="r_conv"><td class="w"><b>Заявка из ботов и эфиров → «Метод»</b></td><td data-label="Сейчас" class="n">7,4%</td><td data-label="Ноябрь" class="n">7,4%</td><td data-label="Декабрь" class="n goal">≈16%</td><td data-label="Ориентир" class="ref wide">45% × 35%</td><td data-label="Чья" class="wide">Арина</td></tr>
+          <tr data-t="r_pod"><td class="w"><b>Заявка с подкастов → «Метод»</b></td><td data-label="Сейчас" class="n">18%</td><td data-label="Ноябрь" class="n">18%</td><td data-label="Декабрь" class="n goal">30%</td><td data-label="Ориентир" class="ref wide">допущение: то же правило ответа и диагностики</td><td data-label="Чья" class="wide">Арина</td></tr>
+          <tr data-t="r_e2e"><td class="w"><b>Сквозная: лид с подкаста → «Метод»</b></td><td data-label="Сейчас" class="n">1,1%</td><td data-label="Ноябрь" class="n">1,1%</td><td data-label="Декабрь" class="n goal">2,4%</td><td data-label="Ориентир" class="ref wide">лид → заявка × заявка → «Метод»</td><td data-label="Чья" class="wide">вся команда</td></tr>
+          <tr data-t="r_ks"><td class="w"><b>Покупатели группы КС</b></td><td data-label="Сейчас" class="n">20–27</td><td data-label="Ноябрь" class="n">25</td><td data-label="Декабрь" class="n goal">35</td><td data-label="Ориентир" class="ref wide">своя история: 27 в августе</td><td data-label="Чья" class="wide">Лена (МК) · Арина</td></tr>
+          <tr data-t="r_ks72"><td class="w"><b>КС → «Метод»</b></td><td data-label="Сейчас" class="n">10,4%</td><td data-label="Ноябрь" class="n">10,4%</td><td data-label="Декабрь" class="n goal">18%</td><td data-label="Ориентир" class="ref wide">своя история: за 90 дней переходят 12,9%</td><td data-label="Чья" class="wide">Арина</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
   <section>
-    <div class="sec-head"><p class="eyebrow">Что нужно для плана</p><h2>Шесть условий</h2><p class="lede">Статус — на 27 октября. Обновляем на каждой планёрке.</p></div>
+    <div class="sec-head"><p class="eyebrow">Что нужно для плана</p><h2>Семь условий</h2><p class="lede">Статус — на 28 октября. Обновляем на каждой планёрке.</p></div>
     <div class="needs">
-      <div class="need" data-t="n1"><div class="top"><h4>Заявки: 48 в неделю</h4><span class="status s-red">сейчас ≈13</span></div><p>Источники: «Перепрошивка 2.0», бот «Потенциал», рассылки по базе, подкасты. План каналов — на каждую неделю.</p><div class="meta"><span>Кто: <b>Миша</b></span><span>С: <b>2.11</b></span></div></div>
-      <div class="need" data-t="n2"><div class="top"><h4>Правило ответа</h4><span class="status s-amb">в работе</span></div><p>Ответ в первые 15 минут в рабочее время, ни одной заявки без ответа. Дежурства вечером и в выходные.</p><div class="meta"><span>Кто: <b>Арина</b></span><span>К: <b>2.11</b></span></div></div>
-      <div class="need" data-t="n3"><div class="top"><h4>Этап «Диагностика проведена»</h4><span class="status s-amb">в работе</span></div><p>Новая воронка в amoCRM: диагностика назначена, клиент не пришёл, диагностика проведена. Без неё не видно, где теряются люди.</p><div class="meta"><span>Кто: <b>Зинур</b></span><span>К: <b>2.11</b></span></div></div>
-      <div class="need" data-t="n4"><div class="top"><h4>Заявки не теряются</h4><span class="status s-amb">проверка каждый день</span></div><p>Заявки из GetCourse доходят в amoCRM. В октябре из-за сбоя неделя прошла почти без заявок.</p><div class="meta"><span>Кто: <b>Зинур</b></span><span>Когда: <b>ежедневно</b></span></div></div>
+      <div class="need" data-t="n1"><div class="top"><h4>Трафик: 42 заявки в неделю</h4><span class="status s-red">плана каналов ещё нет</span></div><p>Повторы подкастов-хитов, новые площадки по правилу «стоп или повтор», перезапуск таргета.</p><div class="meta"><span>Кто: <b>Лена</b>, план каналов — <b>Лена и Кэт</b></span><span>С: <b>2.11</b></span></div></div>
+      <div class="need" data-t="n7"><div class="top"><h4>Метка у каждого эфира</h4><span class="status s-amb">в работе</span></div><p>Своя utm-метка и промокод у каждого эфира, таблица эфиров: цена, лиды, заявки, оплаты за 90 дней.</p><div class="meta"><span>Кто: <b>Зиннур</b>, таблица — <b>Зарина</b></span><span>С: <b>2.11</b></span></div></div>
+      <div class="need" data-t="n1b"><div class="top"><h4>Заявки из ботов и эфиров: 13 в неделю</h4><span class="status s-amb">сейчас ≈13</span></div><p>«Перепрошивка 2.0», бот «Потенциал», рассылки по базе. Главный рычаг — доходимость до эфира: сейчас 5,4%.</p><div class="meta"><span>Кто: <b>Миша</b></span><span>С: <b>2.11</b></span></div></div>
+      <div class="need" data-t="n2"><div class="top"><h4>Правило ответа</h4><span class="status s-amb">в работе</span></div><p>Ответ в первые 15 минут в рабочее время, ни одной заявки без ответа. Дежурства вечером, в выходные и в дни выхода подкастов.</p><div class="meta"><span>Кто: <b>Арина</b></span><span>К: <b>2.11</b></span></div></div>
+      <div class="need" data-t="n3"><div class="top"><h4>Этап «Диагностика проведена»</h4><span class="status s-amb">в работе</span></div><p>Новая воронка в amoCRM: диагностика назначена, клиент не пришёл, диагностика проведена. Без неё не видно, где теряются люди.</p><div class="meta"><span>Кто: <b>Зиннур</b></span><span>К: <b>2.11</b></span></div></div>
+      <div class="need" data-t="n4"><div class="top"><h4>Заявки не теряются</h4><span class="status s-amb">проверка каждый день</span></div><p>Заявки из GetCourse доходят в amoCRM. В октябре из-за сбоя неделя прошла почти без заявок.</p><div class="meta"><span>Кто: <b>Зиннур</b></span><span>Когда: <b>ежедневно</b></span></div></div>
       <div class="need" data-t="n5"><div class="top"><h4>Дашборд с планом</h4><span class="status s-red">нет</span></div><p>Актуальные названия продуктов, звонки всех менеджеров, план рядом с фактом.</p><div class="meta"><span>Кто: <b>Крис</b></span><span>К: <b>9.11</b></span></div></div>
-      <div class="need" data-t="n6"><div class="top"><h4>План у каждого менеджера</h4><span class="status s-grey">к планёрке</span></div><p>Личная цифра на месяц и на неделю у каждого, кто продаёт.</p><div class="meta"><span>Кто: <b>Арина</b></span><span>К: <b>2.11</b></span></div></div>
+    </div>
+  </section>
+
+  <div class="next-tab"><span class="small">Дальше: сколько нужно лидов и трафика</span><button class="btn" type="button" data-go="mkt">Лиды и трафик →</button></div>
+</div>
+
+<!-- 4. ЛИДЫ И ТРАФИК -->
+<div class="panel" id="mkt" role="tabpanel" aria-labelledby="t-mkt" hidden>
+  <section>
+    <p class="thesis">Под план 40 нужен платный трафик: <em>≈700 лидов в неделю при сегодняшних конверсиях или ≈240 при целевых</em>. Трафик на это — 2,6 или ≈0,8 млн ₽ в месяц.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><p class="eyebrow">Стоимость по каналам</p><h2>Сколько стоят лид, заявка и продажа</h2><p class="lede">Лид — регистрация с меткой. Заявка — заявка на диагностику. 2026 год.</p></div>
+    <div class="tbl-wrap resp">
+      <table>
+        <thead><tr><th>Канал</th><th class="n">Лид, ₽</th><th class="n">Заявка, ₽</th><th class="n">Продажа «Метода», ₽</th><th class="n">Выручка на 1 ₽</th></tr></thead>
+        <tbody>
+          <tr data-t="c_pod"><td class="w"><b>Подкасты, все</b></td><td data-label="Лид" class="n">874</td><td data-label="Заявка" class="n">14&nbsp;340</td><td data-label="Продажа" class="n">78&nbsp;800</td><td data-label="На 1 ₽" class="n">1,95</td></tr>
+          <tr data-t="c_hit"><td class="w"><b>Подкасты-хиты</b><span class="sub">6 площадок</span></td><td data-label="Лид" class="n">414</td><td data-label="Заявка" class="n goal">6&nbsp;950</td><td data-label="Продажа" class="n goal">30&nbsp;200</td><td data-label="На 1 ₽" class="n goal">5,1</td></tr>
+          <tr data-t="c_rest"><td class="w"><b>Остальные подкасты</b><span class="sub">11 эфиров</span></td><td data-label="Лид" class="n">1&nbsp;730</td><td data-label="Заявка" class="n">27&nbsp;200</td><td data-label="Продажа" class="n">280&nbsp;000</td><td data-label="На 1 ₽" class="n">0,54</td></tr>
+          <tr data-t="c_fb"><td class="w"><b>Таргет</b><span class="sub">тест, 2 продажи</span></td><td data-label="Лид" class="n">134</td><td data-label="Заявка" class="n">10&nbsp;500</td><td data-label="Продажа" class="n">10&nbsp;500</td><td data-label="На 1 ₽" class="n">17</td></tr>
+          <tr data-t="c_ya"><td class="w"><b>Яндекс Директ</b><span class="sub">тест 5–18.10</span></td><td data-label="Лид" class="n">≈250</td><td data-label="Заявка" class="n">≈25&nbsp;000</td><td data-label="Продажа" class="n">—</td><td data-label="На 1 ₽" class="n">≈0</td></tr>
+          <tr data-t="c_base"><td class="w"><b>Боты, эфиры, база</b></td><td data-label="Лид" class="n">0</td><td data-label="Заявка" class="n">0</td><td data-label="Продажа" class="n">—</td><td data-label="На 1 ₽" class="n">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><p class="eyebrow">Под каждый уровень</p><h2>Сколько лидов, заявок и трафика нужно в месяц</h2></div>
+    <div class="tbl-wrap resp">
+      <table>
+        <thead><tr><th>Уровень · конверсии</th><th class="n">Лидов в неделю</th><th class="n">Заявок в неделю</th><th class="n">Трафик в месяц</th><th class="n">Доля трафика в поступлениях</th><th class="n">Трафик на 1 продажу</th></tr></thead>
+        <tbody>
+          <tr><td class="w"><b>35 · сегодня</b></td><td data-label="Лидов" class="n">596</td><td data-label="Заявок" class="n">49</td><td data-label="Трафик" class="n">2,23 млн</td><td data-label="Доля" class="n">33%</td><td data-label="На продажу" class="n">78,8 тыс.</td></tr>
+          <tr data-t="b_40n"><td class="w"><b>40 · сегодня</b></td><td data-label="Лидов" class="n">701</td><td data-label="Заявок" class="n">55</td><td data-label="Трафик" class="n">2,62 млн</td><td data-label="Доля" class="n">35%</td><td data-label="На продажу" class="n">78,8 тыс.</td></tr>
+          <tr><td class="w"><b>50 · сегодня</b></td><td data-label="Лидов" class="n">912</td><td data-label="Заявок" class="n">68</td><td data-label="Трафик" class="n">3,41 млн</td><td data-label="Доля" class="n">38%</td><td data-label="На продажу" class="n">78,8 тыс.</td></tr>
+          <tr><td class="w"><b>35 · цели</b></td><td data-label="Лидов" class="n">191</td><td data-label="Заявок" class="n">28</td><td data-label="Трафик" class="n goal">0,62 млн</td><td data-label="Доля" class="n goal">9%</td><td data-label="На продажу" class="n goal">31,3 тыс.</td></tr>
+          <tr data-t="b_40t"><td class="w"><b>40 · цели</b></td><td data-label="Лидов" class="n">239</td><td data-label="Заявок" class="n">32</td><td data-label="Трафик" class="n goal">0,78 млн</td><td data-label="Доля" class="n goal">10%</td><td data-label="На продажу" class="n goal">31,3 тыс.</td></tr>
+          <tr><td class="w"><b>50 · цели</b></td><td data-label="Лидов" class="n">336</td><td data-label="Заявок" class="n">40</td><td data-label="Трафик" class="n goal">1,09 млн</td><td data-label="Доля" class="n goal">12%</td><td data-label="На продажу" class="n goal">31,3 тыс.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fig-note">«Сегодня»: лид 863 ₽, лид → заявка 6%, заявка ≈14&nbsp;340 ₽, покупают 18%. «Цели»: лид 750 ₽, лид → заявка 8%, заявка ≈9&nbsp;400 ₽, покупают 30%, конверсии отдела продаж и КС — целевые. Заявки в неделю — вместе с ботами и эфирами (13).</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><p class="eyebrow">Доля трафика</p><h2>Ориентир — до 15–18% поступлений</h2></div>
+    <ul class="findings">
+      <li><span class="tag t-fact">Факт</span><p><b>В 2026 году трафик — около 17% поступлений.</b> ≈30 тысяч рублей на одну новую продажу «Метода». <span class="src">выписки, S</span></p></li>
+      <li><span class="tag t-fact">Факт</span><p><b>При сегодняшних конверсиях план 40 требует 35%.</b> Это слишком дорого: каждая продажа с подкастов стоит ≈79 тысяч. <span class="src">расчёт</span></p></li>
+      <li><span class="tag t-fact">Факт</span><p><b>Ориентир достигается двумя рычагами вместе:</b> отдел продаж поднимает конверсии, а трафик держит цену заявки до 10 тысяч — повторяет хиты и вовремя останавливает слабые площадки. <span class="src">расчёт</span></p></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><p class="eyebrow">Правило «стоп или повтор»</p><h2>Решаем по цене заявки через 3–4 недели</h2></div>
+    <div class="grid2">
+      <div class="needs" style="grid-template-columns:1fr">
+        <div class="need" data-t="g_rep"><div class="top"><h4>Повторяем площадку</h4><span class="status s-ok">заявка до 10 000 ₽</span></div><p>Хиты 2026: заявка 3,4–6 тысяч, выручка — 2,5–8,7 ₽ на рубль. «Новые люди» / «Масштаб»: 2 хита из 2.</p></div>
+        <div class="need" data-t="g_watch"><div class="top"><h4>Смотрим ещё раз</h4><span class="status s-amb">10 000–25 000 ₽</span></div><p>Повтор — только если есть продажи и аудитория совпадает.</p></div>
+        <div class="need" data-t="g_stop"><div class="top"><h4>Не повторяем</h4><span class="status s-red">дороже 25 000 ₽</span></div><p>Дороже — продажа уходит в минус. 11 эфиров 2026 года не окупились.</p></div>
+      </div>
+      <figure class="fig">
+        <div class="fig-head"><h3>Что не предсказывает результат</h3><span class="src">таблица эфиров</span></div>
+        <ul class="findings" style="border-top:0">
+          <li><span class="tag t-fact">Факт</span><p><b>Цена эфира.</b> Хиты стоили 150–500 тысяч, а самое дорогое размещение года не окупилось.</p></li>
+          <li><span class="tag t-fact">Факт</span><p><b>Просмотры.</b> 36,6 тысячи просмотров дали 0 продаж, 43,6 тысячи — 1,25 млн ₽.</p></li>
+          <li><span class="tag t-fact">Факт</span><p><b>Предсказывает цена заявки</b> в первые 3–4 недели. Поэтому у каждого эфира своя метка и промокод.</p></li>
+        </ul>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><p class="eyebrow">Смесь каналов</p><h2>Откуда берём заявки (предложение)</h2><p class="lede">Для плана 40 при сегодняшних конверсиях нужно ≈183 заявки в месяц с трафика.</p></div>
+    <div class="tbl-wrap resp">
+      <table>
+        <thead><tr><th>Канал</th><th class="n">Доля трафика</th><th class="n">Цена заявки</th><th class="n">Заявок в месяц</th><th>Что это значит</th></tr></thead>
+        <tbody>
+          <tr data-t="m_hit"><td class="w"><b>Повторы подкастов-хитов</b></td><td data-label="Доля" class="n">65%</td><td data-label="Цена" class="n">6&nbsp;950 ₽</td><td data-label="Заявок" class="n">139</td><td data-label="Смысл" class="wide">≈3 хит-эфира в месяц</td></tr>
+          <tr><td class="w"><b>Новые подкасты</b><span class="sub">тест</span></td><td data-label="Доля" class="n">15%</td><td data-label="Цена" class="n">14&nbsp;340 ₽</td><td data-label="Заявок" class="n">16</td><td data-label="Смысл" class="wide">по правилу «стоп или повтор»</td></tr>
+          <tr><td class="w"><b>Таргет</b></td><td data-label="Доля" class="n">20%</td><td data-label="Цена" class="n">10&nbsp;500 ₽</td><td data-label="Заявок" class="n">28</td><td data-label="Смысл" class="wide">перезапуск, проверка цены на малом бюджете</td></tr>
+          <tr><td class="w"><b>Яндекс Директ</b></td><td data-label="Доля" class="n">0%</td><td data-label="Цена" class="n">≈25&nbsp;000 ₽</td><td data-label="Заявок" class="n">—</td><td data-label="Смысл" class="wide">сначала итоги теста</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fig-note">При такой смеси средняя заявка ≈8&nbsp;100 ₽, и трафик для плана 40 — ≈1,5 млн ₽ в месяц вместо 2,6. Ограничение — число площадок-хитов: их мало, и их бронируют заранее.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><p class="eyebrow">Эфиры и боты</p><h2>Заявки без затрат на трафик</h2><p class="lede">Бизон, 29 сентября — 28 октября, покупки за 30 дней после эфира.</p></div>
+    <div class="tiles">
+      <div class="tile" data-t="e_link"><div class="big">5,4%</div><p>от выданной в боте ссылки доходят до эфира: переходят 12%, из них приходят 45%. Главный рычаг заявок без затрат.</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">Бизон · 6 197 ссылок</span></div></div>
+      <div class="tile" data-t="e_auto"><div class="big">54<small>заявки</small></div><p>дали 127 авто-эфиров «Перепрошивки» и «Игры союзов» — и 5 покупок. Авто-эфиры приводят заявки, а продаёт разговор.</p><div class="foot"><span class="tag t-fact">Факт</span><span class="src">Бизон</span></div></div>
+      <div class="tile" data-t="e_time"><div class="big">61<small>минута</small></div><p>— первое предложение в эфире. Смотрят в среднем 60 минут. Пробуем приглашать на диагностику на 40–45-й минуте.</p><div class="foot"><span class="tag t-hyp">Гипотеза</span><span class="src">Бизон</span></div></div>
     </div>
   </section>
 
   <div class="next-tab"><span class="small">Дальше: поиграть с планом</span><button class="btn gold" type="button" data-go="sim">Симулятор плана →</button></div>
 </div>
 
-<!-- 4. СИМУЛЯТОР -->
+<!-- 5. СИМУЛЯТОР -->
 <div class="panel" id="sim" role="tabpanel" aria-labelledby="t-sim" hidden>
   <section>
-    <div class="sec-head"><p class="eyebrow">Симулятор</p><h2>Двигайте цифры — план пересчитается</h2><p class="lede">Сколько заявок, диагностик и переходов из КС нужно под выбранную цель. Удобно проверить идею прямо на планёрке: «а если поднимем доходимость до 40%?»</p></div>
+    <div class="sec-head"><p class="eyebrow">Симулятор</p><h2>Двигайте цифры — план пересчитается</h2><p class="lede">Сколько лидов, заявок, диагностик и трафика нужно под выбранную цель. Удобно проверить идею прямо на планёрке: «а если заявка с подкастов станет дешевле?»</p></div>
     <div class="sim">
       <div class="ctrl">
         <div class="ctrl-group">
-          <h4><span>Цель</span><button class="chip ghost" type="button" id="reset">Сбросить</button></h4>
+          <h4><span>Цель</span><span class="presets"><button class="chip ghost" type="button" id="pr_now">Сегодня</button><button class="chip ghost" type="button" id="pr_dec">Цели</button></span></h4>
           <div class="presets" role="group" aria-label="Уровень">
-            <button class="chip" type="button" data-goal="14" aria-pressed="false">Минимум <b>14</b></button>
-            <button class="chip" type="button" data-goal="18" aria-pressed="true">Средний <b>18</b></button>
-            <button class="chip" type="button" data-goal="22" aria-pressed="false">Амбициозный <b>22</b></button>
+            <button class="chip" type="button" data-goal="35" aria-pressed="false">Минимум <b>35</b></button>
+            <button class="chip" type="button" data-goal="40" aria-pressed="true">Хорошо <b>40</b></button>
+            <button class="chip" type="button" data-goal="50" aria-pressed="false">Оптимизм <b>50</b></button>
           </div>
           <div class="sl">
-            <div class="sl-top"><label for="s_goal">Новых продаж «Метода» в месяц</label><span class="sl-val"><button class="step" type="button" data-for="s_goal" data-d="-1" aria-label="Меньше">−</button><output id="v_goal" for="s_goal">18</output><button class="step" type="button" data-for="s_goal" data-d="1" aria-label="Больше">+</button></span></div>
-            <input type="range" id="s_goal" min="6" max="30" step="1" value="18">
+            <div class="sl-top"><label for="s_goal">Новых продаж «Метода» в месяц</label><span class="sl-val"><button class="step" type="button" data-for="s_goal" data-d="-1" aria-label="Меньше">−</button><output id="v_goal" for="s_goal">40</output><button class="step" type="button" data-for="s_goal" data-d="1" aria-label="Больше">+</button></span></div>
+            <input type="range" id="s_goal" min="10" max="70" step="1" value="40">
           </div>
         </div>
         <div class="ctrl-group">
-          <h4><span>Путь 1 · диагностика</span><button class="chip ghost" type="button" id="pr_dec">Цели декабря</button></h4>
+          <h4><span>Путь 1 · подкасты и таргет</span></h4>
           <div class="sl">
-            <div class="sl-top"><label for="s_ld">Заявка → проведённая диагностика<small>доходимость до диагностики</small></label><span class="sl-val"><output id="v_ld" for="s_ld">35%</output></span></div>
-            <input type="range" id="s_ld" min="10" max="70" step="1" value="35">
+            <div class="sl-top"><label for="s_l2a">Лид → заявка<small>сколько лидов оставляют заявку на диагностику</small></label><span class="sl-val"><output id="v_l2a" for="s_l2a">6,0%</output></span></div>
+            <input type="range" id="s_l2a" min="2" max="15" step="0.01" value="6.02">
           </div>
           <div class="sl">
-            <div class="sl-top"><label for="s_dc">Диагностика → «Метод»<small>конверсия разговора в покупку</small></label><span class="sl-val"><output id="v_dc" for="s_dc">30%</output></span></div>
-            <input type="range" id="s_dc" min="5" max="60" step="1" value="30">
+            <div class="sl-top"><label for="s_pod">Заявка → «Метод»<small>для заявок с подкастов и таргета</small></label><span class="sl-val"><output id="v_pod" for="s_pod">18%</output></span></div>
+            <input type="range" id="s_pod" min="5" max="40" step="0.1" value="18.2">
           </div>
-          <p class="sl-ref">Вместе: заявка → «Метод» <b id="v_lm">10,5%</b> · сейчас <b>7,4%</b></p>
+          <div class="sl">
+            <div class="sl-top"><label for="s_cpl">Цена лида, ₽<small>заявка = цена лида ÷ лид → заявка · <span id="v_cpa">14 340</span> ₽</small></label><span class="sl-val"><output id="v_cpl" for="s_cpl">863</output></span></div>
+            <input type="range" id="s_cpl" min="200" max="2000" step="1" value="863">
+          </div>
         </div>
         <div class="ctrl-group">
-          <h4><span>Путь 2 · «Код сознания»</span></h4>
+          <h4><span>Путь 2 · боты, эфиры, рассылки</span></h4>
           <div class="sl">
-            <div class="sl-top"><label for="s_ks">Покупателей группы КС в месяц</label><span class="sl-val"><button class="step" type="button" data-for="s_ks" data-d="-1" aria-label="Меньше">−</button><output id="v_ks" for="s_ks">30</output><button class="step" type="button" data-for="s_ks" data-d="1" aria-label="Больше">+</button></span></div>
-            <input type="range" id="s_ks" min="0" max="60" step="1" value="30">
+            <div class="sl-top"><label for="s_ba">Заявок в месяц<small>без затрат на трафик</small></label><span class="sl-val"><button class="step" type="button" data-for="s_ba" data-d="-1" aria-label="Меньше">−</button><output id="v_ba" for="s_ba">56</output><button class="step" type="button" data-for="s_ba" data-d="1" aria-label="Больше">+</button></span></div>
+            <input type="range" id="s_ba" min="0" max="200" step="1" value="56">
           </div>
           <div class="sl">
-            <div class="sl-top"><label for="s_kc">КС → «Метод» по офферу 72 часа</label><span class="sl-val"><output id="v_kc" for="s_kc">15%</output></span></div>
-            <input type="range" id="s_kc" min="0" max="40" step="0.5" value="15">
+            <div class="sl-top"><label for="s_ld">Заявка → проведённая диагностика<small>доходимость до диагностики</small></label><span class="sl-val"><output id="v_ld" for="s_ld">25%</output></span></div>
+            <input type="range" id="s_ld" min="10" max="70" step="1" value="25">
+          </div>
+          <div class="sl">
+            <div class="sl-top"><label for="s_dc">Диагностика → «Метод»<small>конверсия разговора в покупку</small></label><span class="sl-val"><output id="v_dc" for="s_dc">29,6%</output></span></div>
+            <input type="range" id="s_dc" min="5" max="60" step="0.1" value="29.6">
+          </div>
+          <p class="sl-ref">Вместе: заявка → «Метод» <b id="v_lm">7,4%</b> · сейчас <b>7,4%</b>, цель <b>15,8%</b></p>
+        </div>
+        <div class="ctrl-group">
+          <h4><span>Путь 3 · «Код сознания»</span></h4>
+          <div class="sl">
+            <div class="sl-top"><label for="s_ks">Покупателей группы КС в месяц</label><span class="sl-val"><button class="step" type="button" data-for="s_ks" data-d="-1" aria-label="Меньше">−</button><output id="v_ks" for="s_ks">25</output><button class="step" type="button" data-for="s_ks" data-d="1" aria-label="Больше">+</button></span></div>
+            <input type="range" id="s_ks" min="0" max="60" step="1" value="25">
+          </div>
+          <div class="sl">
+            <div class="sl-top"><label for="s_kc">КС → «Метод» по офферу 72 часа</label><span class="sl-val"><output id="v_kc" for="s_kc">10,4%</output></span></div>
+            <input type="range" id="s_kc" min="0" max="40" step="0.1" value="10.4">
           </div>
         </div>
         <div class="ctrl-group">
@@ -723,31 +901,33 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
         </div>
       </div>
       <div class="res" aria-live="polite">
-        <div class="verdict"><span class="pill" id="r_pill">Средний</span><span id="r_vtxt">рабочий план</span></div>
+        <div class="verdict"><span class="pill" id="r_pill">Хорошо</span><span id="r_vtxt">рабочий план</span></div>
         <div class="res-hero">
-          <div data-t="x_leads"><span>Заявок в месяц</span><b class="g" id="r_leads">129</b><small id="r_leadsw">30 в неделю</small></div>
-          <div data-t="x_diag"><span>Проведённых диагностик</span><b id="r_diag">45</b><small id="r_diagw">10,4 в неделю</small></div>
+          <div data-t="x_leads"><span>Лидов с трафика в месяц</span><b class="g" id="r_leads">3&nbsp;031</b><small id="r_leadsw">700 в неделю</small></div>
+          <div data-t="x_apps"><span>Заявок на диагностику</span><b id="r_apps">238</b><small id="r_appsw">55 в неделю</small></div>
         </div>
         <div class="mix" data-t="x_mix">
-          <div class="mixbar"><i id="mx1" style="background:var(--band-gold)"></i><i id="mx2" style="background:var(--band-muted)"></i></div>
-          <div class="mixkey"><span><i style="background:var(--band-gold)"></i>через диагностику <b id="r_p1">13,5</b></span><span><i style="background:var(--band-muted)"></i>через КС <b id="r_p2">4,5</b></span></div>
+          <div class="mixbar"><i id="mx1" style="background:var(--band-gold)"></i><i id="mx2" style="background:var(--band-muted)"></i><i id="mx3" style="background:var(--c3)"></i></div>
+          <div class="mixkey"><span><i style="background:var(--band-gold)"></i>трафик <b id="r_p1">33,2</b></span><span><i style="background:var(--band-muted)"></i>боты и эфиры <b id="r_p2">4,1</b></span><span><i style="background:var(--c3)"></i>через КС <b id="r_p3">2,6</b></span></div>
         </div>
         <div class="res-list">
-          <div data-t="x_week"><span>Новых продаж в неделю</span><b id="r_week">4,2</b></div>
-          <div data-t="x_load"><span>Диагностик на менеджера в день</span><b id="r_load">0,7</b></div>
-          <div data-t="x_rev"><span>Продажи «Метода» в месяц</span><b id="r_rev">3,77 млн ₽</b></div>
-          <div data-t="x_now"><span>Заявок нужно при сегодняшних 7,4%</span><b id="r_now">208</b></div>
+          <div data-t="x_week"><span>Новых продаж в неделю</span><b id="r_week">9,2</b></div>
+          <div data-t="x_mkt"><span>Трафик в месяц</span><b id="r_mkt">2,61 млн ₽</b></div>
+          <div data-t="x_cps"><span>Трафик на одну продажу с трафика</span><b id="r_cps">78,8 тыс. ₽</b></div>
+          <div data-t="x_share"><span>Доля трафика в поступлениях</span><b id="r_share">35%</b></div>
+          <div data-t="x_diag"><span>Проведённых диагностик в месяц</span><b id="r_diag">60</b></div>
+          <div data-t="x_load"><span>Диагностик на менеджера в день</span><b id="r_load">0,9</b></div>
         </div>
-        <p class="cmp" id="r_cmp">Рост конверсий экономит <b>79 заявок в месяц</b> — их не нужно привлекать.</p>
+        <p class="cmp" id="r_cmp">—</p>
       </div>
     </div>
-    <p class="fig-note">Средний чек новой продажи — 209 399 ₽ (ПРО 77%, ВИП 18%, Стандарт 5% по факту 2026 года). Ориентир практиков: менеджер проводит не больше 3–4 диагностик в день. Рабочих дней в месяце — 22.</p>
+    <p class="fig-note">Собранный чек новой продажи ≈185 500 ₽ (ПРО 77%, ВИП 18%, Стандарт 5%; потоки 9–10 собрали ≈89% прайса). Доля трафика считается от всех поступлений месяца, вместе с повторами и другими продуктами (≈1 млн ₽). Диагностики — все заявки × доходимость. Ориентир практиков: не больше 3–4 диагностик на менеджера в день.</p>
   </section>
 
   <div class="next-tab"><span class="small">Дальше: кто за что отвечает</span><button class="btn" type="button" data-go="roles">Роли →</button></div>
 </div>
 
-<!-- 5. РОЛИ -->
+<!-- 6. РОЛИ -->
 <div class="panel" id="roles" role="tabpanel" aria-labelledby="t-roles" hidden>
   <section>
     <p class="thesis">У каждого свой участок и <em>одна главная цифра</em>. На планёрке человек отвечает за свою цифру.</p>
@@ -755,39 +935,45 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
   <section>
     <div class="roles">
       <article class="role lead">
-        <div class="who"><span class="ava">Л</span><div><b>Лена</b><span>основатель · продукт и решения</span></div></div>
+        <div class="who"><span class="ava">Л</span><div><b>Лена</b><span>основатель · продукт, подкасты и решения</span></div></div>
         <div class="metric" data-t="rm_lena"><span>Главная цифра</span><b>План месяца выполнен</b></div>
-        <ul><li>Утверждает уровни плана</li><li>Решает по офферам, акциям и «Чёрной пятнице»</li><li>Принимает решения, которые нужны команде</li></ul>
+        <ul><li>Утверждает уровни плана и бюджет трафика</li><li>Подкасты: выбор площадок, запись, бронь</li><li>Живой мастер-класс перед группой КС</li><li>Решает по офферам, акциям и «Чёрной пятнице»</li></ul>
         <p class="not"><b>На планёрке:</b> 5 минут в конце — решения и фокус недели.</p>
       </article>
       <article class="role">
         <div class="who"><span class="ava">А</span><div><b>Арина</b><span>руководитель отдела продаж</span></div></div>
-        <div class="metric" data-t="rm_arina"><span>Главная цифра</span><b>Новые продажи «Метода»: 18 в месяц, 4,2 в неделю</b></div>
-        <ul><li>Разбивка плана по менеджерам</li><li>Правило ответа: 15 минут, ни одной заявки без ответа</li><li>Диагностики → «Метод», КС и переходы из КС</li><li>Свои строки в таблице к 12:00 понедельника</li></ul>
-        <p class="not"><b>Не настраивает</b> amoCRM и дашборд — это Зинур и Крис.</p>
+        <div class="metric" data-t="rm_arina"><span>Главная цифра</span><b>Новые продажи «Метода»: 40 в месяц, 9,2 в неделю</b></div>
+        <ul><li>Разбивка плана по менеджерам</li><li>Правило ответа: 15 минут, ни одной заявки без ответа</li><li>Конверсии: заявка → диагностика → «Метод», КС → «Метод»</li><li>Дежурства в дни выхода подкастов</li><li>Свои строки в таблице к 12:00 понедельника</li></ul>
+        <p class="not"><b>Не настраивает</b> amoCRM и GetCourse — это Зиннур и Крис.</p>
       </article>
       <article class="role">
-        <div class="who"><span class="ava">М</span><div><b>Миша</b><span>маркетинг · поток заявок</span></div></div>
-        <div class="metric" data-t="rm_misha"><span>Главная цифра</span><b>Заявки на диагностику: 48 в неделю</b></div>
-        <ul><li>План каналов на неделю</li><li>«Перепрошивка 2.0», «Потенциал», рассылки, подкасты</li><li>Откуда пришли заявки прошлой недели</li><li>Если заявок меньше 80% плана — что включаем</li></ul>
-        <p class="not"><b>Отвечает за количество</b> заявок. Что с ними дальше — участок Арины.</p>
+        <div class="who"><span class="ava">М</span><div><b>Миша</b><span>маркетинг · боты, эфиры, рассылки</span></div></div>
+        <div class="metric" data-t="rm_misha"><span>Главная цифра</span><b>Заявки из ботов, эфиров и рассылок: 13 в неделю</b></div>
+        <ul><li>«Перепрошивка 2.0», «Потенциал», рассылки по базе</li><li>Доходимость от ссылки в боте до эфира</li><li>Если заявок меньше 80% плана — что включаем</li></ul>
+        <p class="not"><b>Отвечает за количество</b> заявок без затрат на трафик. Что с ними дальше — участок Арины.</p>
       </article>
       <article class="role">
-        <div class="who"><span class="ava">З</span><div><b>Зинур</b><span>amoCRM и данные</span></div></div>
-        <div class="metric" data-t="rm_zinur"><span>Главная цифра</span><b>Заявка → проведённая диагностика</b></div>
-        <ul><li>Воронка с этапами диагностики к 2.11</li><li>Отчёт по этапам к планёрке</li><li>Каждый день: заявки из GetCourse доходят в amoCRM</li></ul>
-        <p class="not"><b>Отвечает за то,</b> чтобы цифры были верными. Выводы — на планёрке.</p>
+        <div class="who"><span class="ava">З</span><div><b>Зиннур</b><span>техника · amoCRM, GetCourse, аналитика</span></div></div>
+        <div class="metric" data-t="rm_zinur"><span>Главная цифра</span><b>Цифры воронки верные и готовы к 10:00 понедельника</b></div>
+        <ul><li>Воронка amoCRM с этапами диагностики к 2.11</li><li>Метки и промокоды эфиров, лиды и заявки по каналам</li><li>Каждый день: заявки из GetCourse доходят в amoCRM</li><li>Отчёт по этапам и каналам к планёрке</li></ul>
+        <p class="not"><b>Не отвечает за продажи.</b> Отвечает за то, чтобы цифры были верными и пришли вовремя.</p>
       </article>
       <article class="role">
-        <div class="who"><span class="ava">К</span><div><b>Крис</b><span>дашборд GetCourse</span></div></div>
+        <div class="who"><span class="ava">К</span><div><b>Крис</b><span>GetCourse · дашборд</span></div></div>
         <div class="metric" data-t="rm_kris"><span>Главная цифра</span><b>Дашборд показывает план и факт без ручных правок</b></div>
         <ul><li>Актуальные названия продуктов</li><li>Звонки всех менеджеров</li><li>План рядом с фактом</li><li>Срок — к первому план-факту 9.11</li></ul>
         <p class="not"><b>На планёрке</b> — пока дашборд не готов.</p>
       </article>
+      <article class="role">
+        <div class="who"><span class="ava">З</span><div><b>Зарина</b><span>таблица эфиров</span></div></div>
+        <div class="metric" data-t="rm_zarina"><span>Главная цифра</span><b>По каждому эфиру видно цену заявки за 3–4 недели</b></div>
+        <ul><li>Цена, дата и метка каждого эфира</li><li>Лиды, заявки и оплаты за 90 дней — вместе с Зиннуром</li><li>Список эфиров для решения «стоп или повтор»</li></ul>
+        <p class="not"><b>Данные</b> — из меток и GetCourse, без ручных оценок.</p>
+      </article>
       <article class="role me">
         <div class="who"><span class="ava">К</span><div><b>Кэт</b><span>операционный партнёр</span></div></div>
-        <div class="metric" data-t="rm_cath"><span>Главная цифра</span><b>План и факт по продажам и конверсиям</b></div>
-        <ul><li>Цифры и уровни плана</li><li>Открывает планёрку: план-факт за 5 минут</li><li>Ведёт разбор отклонений: причина, действие, кто, срок</li></ul>
+        <div class="metric" data-t="rm_cath"><span>Главная цифра</span><b>План и факт по продажам, лидам и конверсиям</b></div>
+        <ul><li>Цифры и уровни плана</li><li>План каналов и бюджет трафика — вместе с Леной</li><li>Открывает планёрку: план-факт за 5 минут</li><li>Ведёт разбор отклонений: причина, действие, кто, срок</li></ul>
         <p class="not"><b>Не ведёт</b> продажи, не настраивает платформы и не пишет тексты — это зоны команды.</p>
       </article>
     </div>
@@ -797,18 +983,23 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     <div class="sec-head"><p class="eyebrow">Кто делает, кто утверждает</p><h2>Карта ответственности</h2></div>
     <div class="key"><span><span class="mk d">Д</span> делает и отвечает</span><span><span class="mk u">У</span> утверждает</span><span><span class="mk p">П</span> помогает или даёт данные</span></div>
     <div class="tbl-wrap">
-      <table class="matrix" style="min-width:700px">
-        <thead><tr><th>Задача</th><th class="c">Лена</th><th class="c">Арина</th><th class="c">Миша</th><th class="c">Зинур</th><th class="c">Крис</th><th class="c">Кэт</th></tr></thead>
+      <table class="matrix" style="min-width:780px">
+        <thead><tr><th>Задача</th><th class="c">Лена</th><th class="c">Арина</th><th class="c">Миша</th><th class="c">Зиннур</th><th class="c">Крис</th><th class="c">Зарина</th><th class="c">Кэт</th></tr></thead>
         <tbody>
-          <tr><td>Уровни плана: 14, 18, 22</td><td class="c"><span class="mk u">У</span></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td></tr>
-          <tr><td>Разбивка плана по менеджерам</td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td></tr>
-          <tr><td>Правило ответа и дежурства</td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td></tr>
-          <tr><td>Поток заявок</td><td class="c"></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td></tr>
-          <tr><td>Воронка amoCRM с диагностиками</td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"></td></tr>
-          <tr><td>Дашборд: продукты, звонки, план</td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk p">П</span></td></tr>
-          <tr><td>Таблица план-факт к 12:00 понедельника</td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"><span class="mk p">П</span></td></tr>
-          <tr><td>Разбор отклонений на планёрке</td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td></tr>
-          <tr><td>Офферы и акции</td><td class="c"><span class="mk u">У</span></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+          <tr><td>Уровни плана: 35, 40, 50</td><td class="c"><span class="mk u">У</span></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td></tr>
+          <tr><td>План каналов и бюджет трафика</td><td class="c"><span class="mk u">У</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk d">Д</span></td></tr>
+          <tr><td>Подкасты: площадки, запись, бронь</td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk p">П</span></td></tr>
+          <tr><td>Метки и промокоды эфиров</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td></tr>
+          <tr><td>Таблица эфиров: цена, лиды, заявки, оплаты</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk p">П</span></td></tr>
+          <tr><td>«Стоп или повтор» по эфиру</td><td class="c"><span class="mk u">У</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk d">Д</span></td></tr>
+          <tr><td>Заявки из ботов, эфиров, рассылок</td><td class="c"></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td></tr>
+          <tr><td>Разбивка плана по менеджерам</td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk p">П</span></td></tr>
+          <tr><td>Правило ответа и дежурства</td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+          <tr><td>Воронка amoCRM с диагностиками</td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+          <tr><td>Дашборд: продукты, звонки, план</td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"><span class="mk p">П</span></td></tr>
+          <tr><td>Таблица план-факт к 12:00 понедельника</td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk d">Д</span></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td><td class="c"><span class="mk p">П</span></td></tr>
+          <tr><td>Разбор отклонений на планёрке</td><td class="c"></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="mk d">Д</span></td></tr>
+          <tr><td>Офферы и акции</td><td class="c"><span class="mk u">У</span></td><td class="c"><span class="mk p">П</span></td><td class="c"><span class="mk p">П</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
         </tbody>
       </table>
     </div>
@@ -817,7 +1008,7 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
   <div class="next-tab"><span class="small">Дальше: как проходит планёрка</span><button class="btn" type="button" data-go="sync">Планёрка →</button></div>
 </div>
 
-<!-- 6. ПЛАНЁРКА -->
+<!-- 7. ПЛАНЁРКА -->
 <div class="panel" id="sync" role="tabpanel" aria-labelledby="t-sync" hidden>
   <section>
     <p class="thesis">40 минут, <em>пять участков, одна таблица</em>. Цифры готовы до начала, на планёрке разбираем отклонения и договариваемся, кто что делает.</p>
@@ -825,12 +1016,12 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
 
   <section>
     <div class="sec-head"><p class="eyebrow">Понедельник · 13:00 МСК</p><h2>Порядок планёрки</h2></div>
-    <div class="timebar" aria-hidden="true"><i style="flex:5;background:var(--ink)"></i><i style="flex:7;background:var(--gold-fill)"></i><i style="flex:5;background:var(--c3)"></i><i style="flex:5;background:var(--c3)"></i><i style="flex:3;background:var(--c3)"></i><i style="flex:10;background:var(--risk)"></i><i style="flex:5;background:var(--gold)"></i></div>
+    <div class="timebar" aria-hidden="true"><i style="flex:5;background:var(--ink)"></i><i style="flex:7;background:var(--gold-fill)"></i><i style="flex:6;background:var(--c3)"></i><i style="flex:4;background:var(--c3)"></i><i style="flex:3;background:var(--c3)"></i><i style="flex:10;background:var(--risk)"></i><i style="flex:5;background:var(--gold)"></i></div>
     <div class="agenda">
       <div class="ag"><span class="time"><b>13:00</b>5 мин</span><div class="box k" data-t="a_cath"><h4>Цифры недели</h4><span class="who">Кэт</span><p>План-факт одной таблицей: что в плане, что нет, три главных отклонения.</p></div></div>
-      <div class="ag"><span class="time"><b>13:05</b>7 мин</span><div class="box a" data-t="a_arina"><h4>Продажи</h4><span class="who">Арина</span><p>Новые «Метода», КС, переходы из КС, скорость ответа.</p><span class="say">План 4,2 · факт 5 · что делаю на неделе · что нужно от других</span></div></div>
-      <div class="ag"><span class="time"><b>13:12</b>5 мин</span><div class="box" data-t="a_misha"><h4>Заявки</h4><span class="who">Миша</span><p>Сколько заявок и откуда. Что включаем на этой неделе.</p><span class="say">План 48 · факт 40 · каналы · что включаю</span></div></div>
-      <div class="ag"><span class="time"><b>13:17</b>5 мин</span><div class="box" data-t="a_zinur"><h4>Воронка amoCRM</h4><span class="who">Зинур</span><p>Сколько дошли до диагностики, сколько не пришли, были ли сбои.</p><span class="say">Назначено · проведено · не пришли · сбои: да/нет</span></div></div>
+      <div class="ag"><span class="time"><b>13:05</b>7 мин</span><div class="box a" data-t="a_arina"><h4>Продажи</h4><span class="who">Арина</span><p>Новые «Метода», КС, переходы из КС, скорость ответа.</p><span class="say">План 9,2 · факт 10 · что делаю на неделе · что нужно от других</span></div></div>
+      <div class="ag"><span class="time"><b>13:12</b>6 мин</span><div class="box" data-t="a_traffic"><h4>Лиды и заявки</h4><span class="who">Миша · Лена</span><p>Заявки из ботов и эфиров — Миша. Лиды, заявки и цена заявки по подкастам и таргету — по таблице эфиров.</p><span class="say">План 13 / 42 · факт · цена заявки · что включаем</span></div></div>
+      <div class="ag"><span class="time"><b>13:18</b>4 мин</span><div class="box" data-t="a_zinur"><h4>Данные и воронка</h4><span class="who">Зиннур</span><p>Сколько дошли до диагностики, сколько не пришли, были ли сбои, все ли эфиры с метками.</p><span class="say">Назначено · проведено · не пришли · сбои: да/нет</span></div></div>
       <div class="ag"><span class="time"><b>13:22</b>3 мин</span><div class="box" data-t="a_kris"><h4>Дашборд</h4><span class="who">Крис</span><p>Что готово, что осталось, к какому сроку. Когда дашборд готов, блок убираем.</p></div></div>
       <div class="ag"><span class="time"><b>13:25</b>10 мин</span><div class="box dev" data-t="a_dev"><h4>Отклонения → действия</h4><span class="who">ведёт Кэт</span><p>Только строки ниже 80% плана или без данных. По каждой: причина, действие, кто, срок.</p></div></div>
       <div class="ag"><span class="time"><b>13:35</b>5 мин</span><div class="box l" data-t="a_lena"><h4>Решения и фокус недели</h4><span class="who">Лена</span><p>Что решаем сегодня и на чём фокус. Остальное — в «парковку».</p></div></div>
@@ -843,7 +1034,7 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     <div class="rules">
       <div class="rule"><b>Цифры — до 12:00</b><p>Каждый вносит свою строку заранее. На планёрке ничего не считаем и не ищем.</p></div>
       <div class="rule"><b>Говорит владелец участка</b><p>Вопросы — в конце блока. Чужой участок не обсуждаем.</p></div>
-      <div class="rule"><b>В плане — одна фраза</b><p>«Заявки в плане, 50 из 48». Время уходит на отклонения.</p></div>
+      <div class="rule"><b>В плане — одна фраза</b><p>«Заявки в плане, 58 из 55». Время уходит на отклонения.</p></div>
       <div class="rule"><b>Отклонение — по формату</b><p>Факт ниже 80% плана или нет данных: причина → действие → кто → срок.</p></div>
       <div class="rule"><b>Обсуждаем цифры и процессы</b><p>Вопросы по работе конкретного человека — один на один с Ариной.</p></div>
       <div class="rule"><b>Новая тема — в «парковку»</b><p>Записываем и обсуждаем после планёрки или в чате.</p></div>
@@ -856,8 +1047,8 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     <div class="sec-head"><p class="eyebrow">Подготовка</p><h2>Как готовимся к 13:00</h2></div>
     <div class="prep">
       <div class="pstep" data-t="p1"><span class="t">пт–вс</span><b>Неделя закрыта</b><p>Все сделки недели стоят на нужных этапах amoCRM.</p></div>
-      <div class="pstep" data-t="p2"><span class="t">пн 10:00</span><b>Выгрузка</b><p>Зинур — этапы amoCRM, Крис — оплаты из GetCourse.</p></div>
-      <div class="pstep" data-t="p3"><span class="t">пн 12:00</span><b>Таблица заполнена</b><p>Арина, Миша, Зинур вносят факт и причину, если не в плане.</p></div>
+      <div class="pstep" data-t="p2"><span class="t">пн 10:00</span><b>Выгрузка</b><p>Зиннур — этапы amoCRM, лиды и заявки по меткам; Крис — оплаты из GetCourse.</p></div>
+      <div class="pstep" data-t="p3"><span class="t">пн 12:00</span><b>Таблица заполнена</b><p>Арина, Миша, Зиннур, Зарина вносят факт и причину, если не в плане.</p></div>
       <div class="pstep" data-t="p4"><span class="t">пн 12:30</span><b>Отклонения отобраны</b><p>Кэт отмечает строки ниже 80% и готовит вопросы.</p></div>
       <div class="pstep go" data-t="p5"><span class="t">пн 13:00</span><b>Планёрка</b><p>40 минут. Протокол — до 15:00.</p></div>
     </div>
@@ -869,21 +1060,23 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
       <div class="mock-bar"><span class="ttl"><span class="dots3" aria-hidden="true"><i></i><i></i><i></i></span>План-факт · неделя 9–15 ноября</span><span class="tag t-ex">Пример</span></div>
       <div class="mock-body">
         <div class="prog" data-t="x_month">
-          <div class="row"><span><b>Новые продажи «Метода» с 1 ноября</b></span><span class="num">8 из 18 · прошло 2,1 недели из 4,3</span></div>
-          <div class="bar"><b style="width:calc(8/18*100%)"></b><i style="left:calc(2.1/4.33*100%)"></i></div>
-          <span class="small">Темп 92% от плана. Золотой пунктир — где должны быть сегодня.</span>
+          <div class="row"><span><b>Новые продажи «Метода» с 1 ноября</b></span><span class="num">18 из 40 · прошло 2,1 недели из 4,3</span></div>
+          <div class="bar"><b style="width:calc(18/40*100%)"></b><i style="left:calc(2.1/4.33*100%)"></i></div>
+          <span class="small">Темп 93% от плана. Золотой пунктир — где должны быть сегодня.</span>
         </div>
         <div class="tbl-wrap">
           <table class="pf" style="min-width:760px">
             <thead><tr><th>Показатель</th><th>Чей</th><th class="n">План</th><th class="n">Факт</th><th class="n">%</th><th>Статус</th><th>Причина и действие</th></tr></thead>
             <tbody>
-              <tr><td data-t="x_r1">Заявки на диагностику</td><td>Миша</td><td class="n">48</td><td class="n">40</td><td class="n"><span class="pct">83%</span></td><td><span class="status s-amb" data-t="x_st_amb">рядом</span></td><td>—</td></tr>
+              <tr><td data-t="x_r0">Лиды с подкастов и таргета</td><td>Лена</td><td class="n">701</td><td class="n">520</td><td class="n"><span class="pct">74%</span></td><td><span class="status s-red">отклонение</span></td><td>эфир сдвинулся на неделю → бронь замены из списка хитов · Лена · 16.11</td></tr>
+              <tr><td data-t="x_r1">Заявки из ботов и эфиров</td><td>Миша</td><td class="n">13</td><td class="n">12</td><td class="n"><span class="pct">92%</span></td><td><span class="status s-amb" data-t="x_st_amb">рядом</span></td><td>—</td></tr>
               <tr><td data-t="x_r2">Заявки без ответа</td><td>Арина</td><td class="n">0%</td><td class="n">9%</td><td class="n"><span class="pct">—</span></td><td><span class="status s-red" data-t="x_st_red">отклонение</span></td><td data-t="x_dev1">вечерние заявки после 21:00 → дежурство до 23:00 · Арина · 16.11</td></tr>
               <tr><td data-t="x_r3">Ответ за 15 минут</td><td>Арина</td><td class="n">50%</td><td class="n">34%</td><td class="n"><span class="pct">68%</span></td><td><span class="status s-red">отклонение</span></td><td>то же действие</td></tr>
-              <tr><td data-t="x_r4">Проведённые диагностики</td><td>Зинур</td><td class="n">база</td><td class="n">14</td><td class="n"><span class="pct">—</span></td><td><span class="status s-blue" data-t="x_st_blue">меряем</span></td><td>неделя 2 из 4</td></tr>
-              <tr><td data-t="x_r5">Новые продажи «Метода»</td><td>Арина</td><td class="n">4,2</td><td class="n">5</td><td class="n"><span class="pct">119%</span></td><td><span class="status s-ok" data-t="x_st_ok">в плане</span></td><td>—</td></tr>
+              <tr><td data-t="x_r4">Проведённые диагностики</td><td>Арина</td><td class="n">база</td><td class="n">14</td><td class="n"><span class="pct">—</span></td><td><span class="status s-blue" data-t="x_st_blue">меряем</span></td><td>неделя 2 из 4</td></tr>
+              <tr><td data-t="x_r5">Новые продажи «Метода»</td><td>Арина</td><td class="n">9,2</td><td class="n">10</td><td class="n"><span class="pct">109%</span></td><td><span class="status s-ok" data-t="x_st_ok">в плане</span></td><td>—</td></tr>
               <tr><td data-t="x_r6">Продажи КС</td><td>Арина</td><td class="n">5,8</td><td class="n">3</td><td class="n"><span class="pct">52%</span></td><td><span class="status s-red">отклонение</span></td><td>группа открылась в четверг → рассылка по заявкам без покупки · Миша · 17.11</td></tr>
               <tr><td data-t="x_r7">Переходы КС → «Метод»</td><td>Арина</td><td class="n">0,6</td><td class="n">1</td><td class="n"><span class="pct">167%</span></td><td><span class="status s-ok">в плане</span></td><td>—</td></tr>
+              <tr><td data-t="x_r9">Цена заявки по эфиру за 3 недели</td><td>Зарина</td><td class="n">≤10&nbsp;000</td><td class="n">7&nbsp;400</td><td class="n"><span class="pct">—</span></td><td><span class="status s-ok">в плане</span></td><td>повторяем площадку</td></tr>
               <tr><td data-t="x_r8">Повторы выпускников</td><td>Арина</td><td class="n">учёт</td><td class="n">2</td><td class="n"><span class="pct">—</span></td><td><span class="status s-grey" data-t="x_st_grey">вне плана</span></td><td>—</td></tr>
             </tbody>
           </table>
@@ -922,9 +1115,10 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
 <pre class="proto" id="proto">Планёрка [дата] · итоги
 
 Цифры недели (план / факт):
-• заявки на диагностику: 48 / __
+• лиды с подкастов и таргета: 701 / __ · цена заявки: __
+• заявки из ботов и эфиров: 13 / __ · с трафика: 42 / __
 • без ответа: 0% / __ · ответ за 15 мин: 50% / __
-• новые «Метода»: 4,2 / __ · с начала месяца: __ из 18
+• новые «Метода»: 9,2 / __ · с начала месяца: __ из 40
 • КС: 5,8 / __ · переходы КС → «Метод»: 0,6 / __
 
 Отклонения и действия:
@@ -947,15 +1141,15 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
   </section>
 
   <section>
-    <div class="callout"><h3>С чего начинаем</h3><p>2 ноября утверждаем план, роли и этот формат, Арина показывает разбивку по менеджерам. 9 ноября — первая планёрка по таблице. 30 ноября по диагностикам появляется своя база, и мы уточняем цели декабря.</p></div>
+    <div class="callout"><h3>С чего начинаем</h3><p>2 ноября утверждаем план, роли, план трафика на ноябрь и этот формат, Арина показывает разбивку по менеджерам. 9 ноября — первая планёрка по таблице. 30 ноября по диагностикам появляется своя база, и мы уточняем цели декабря.</p></div>
   </section>
 </div>
 
 <details style="margin-top:56px">
   <summary>Источники и как считали</summary>
   <div class="inner">
-    <p><b>S</b> — выгрузка GetCourse и amoCRM на 26.10.2026: новые покупатели «Метода», заявки, конверсии, группы КС, 11-й поток. <b>A</b> — управленческий отчёт за 1.09–20.10.2026: скорость ответа. Уровни плана сверены с финмоделью Академии.</p>
-    <p>Заявок нужно = (продажи − переходы из КС) ÷ конверсия заявки в «Метод». Ноябрь — по сегодняшним 7,4% и 25 × 10,4% из КС. Декабрь — по целям: 35% × 30% = 10,5% и 30 × 15%.</p>
+    <p><b>S</b> — выгрузка GetCourse и amoCRM на 26.10.2026: новые покупатели «Метода», заявки, конверсии, группы КС, 11-й поток, собранный чек потоков. <b>A</b> — управленческий отчёт за 1.09–20.10.2026: скорость ответа. <b>Таблица эфиров</b> — цена, лиды, заявки и оплаты по каждому подкасту 2025–2026 (первое касание). <b>Бизон</b> — эфиры 29.09–28.10. Уровни плана и трафик сверены с финмоделью Академии.</p>
+    <p>Продаж с трафика нужно = цель − переходы из КС − заявки из ботов и эфиров × их конверсия. Заявок с трафика = продажи с трафика ÷ заявка → «Метод». Лидов = заявки ÷ лид → заявка. Трафик = заявки × цена заявки. Ноябрь — по сегодняшним конверсиям, декабрь — по целям.</p>
     <p>Ориентиры рынка взяты из открытых материалов практиков. Ниши у них разные, поэтому это ориентиры, а не норма:
       <a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" target="_blank" rel="noopener">HBR, «The Short Life of Online Sales Leads», 2011</a>;
       <a href="https://callingly.com/blog/state-of-speed-to-lead" target="_blank" rel="noopener">обзор исследований скорости ответа (Oldroyd, MIT / InsideSales)</a>;
@@ -965,23 +1159,23 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     <p>Персональных данных клиентов на странице нет.</p>
   </div>
 </details>
-<footer>Академия Вайлер · план продаж на ноябрь–декабрь 2026 · версия от 27 октября</footer>
+<footer>Академия Вайлер · план продаж и трафика на ноябрь–декабрь 2026 · версия от 28 октября, цели согласованы</footer>
 </div>
 
 <script>
 (function(){
   const T={
-    h_min:['Минимум — 14','Нижняя граница новых продаж «Метода» в месяц.','финмодель Академии','При 14 Академия уверенно покрывает все текущие расходы. Ниже не опускаемся.'],
-    h_mid:['Средний — 18, рабочий план','Цель, по которой живёт таблица планёрки: 4,2 новые продажи в неделю.','финмодель, S','Расходы покрыты с запасом. Уровень июля.'],
-    h_amb:['Амбициозный — 22','Цель на рост.','S: июнь — 22','Реально, если заявки держатся на уровне ноября, а конверсии к декабрю вырастут.'],
-    m_jun:['Июнь: 22 новых','Новые покупатели «Метода», без повторных.','S','Лучший месяц года — это амбициозный уровень.'],
-    m_jul:['Июль: 19 новых','Новые покупатели «Метода».','S','Выше рабочего плана.'],
-    m_aug:['Август: 15 новых','Новые покупатели «Метода».','S','Между минимумом и рабочим планом.'],
-    m_sep:['Сентябрь: 9 новых','Новые покупатели «Метода».','S','Ниже минимума. Заявок было много, но из сентябрьских заявок купили пока 3,3%.'],
+    h_min:['Минимум — 35','Нижняя граница новых продаж «Метода» в месяц.','финмодель Академии','При 35 Академия покрывает все расходы вместе с трафиком. Запас появляется, когда растут конверсии.'],
+    h_mid:['Хорошо — 40, рабочий план','Цель, по которой живёт таблица планёрки: 9,2 новые продажи в неделю.','финмодель, S','Расходы и трафик покрыты с запасом при любой окупаемости трафика, которую мы видели в 2026 году.'],
+    h_amb:['Оптимизм — 50','Цель на рост.','финмодель','Реально, если подкасты-хиты повторяются, а конверсии растут к декабрю.'],
+    m_jun:['Июнь: 22 новых','Новые покупатели «Метода», без повторных.','S','Лучший месяц года — почти вдвое меньше плана 40.'],
+    m_jul:['Июль: 19 новых','Новые покупатели «Метода».','S','Около среднего за 2026 год (≈21).'],
+    m_aug:['Август: 15 новых','Новые покупатели «Метода».','S','Ниже среднего за год.'],
+    m_sep:['Сентябрь: 9 новых','Новые покупатели «Метода».','S','Заявок было много (247), но из сентябрьских заявок купили пока 3,3%.'],
     m_oct:['Октябрь, 1–26: 3 новых','Месяц неполный, поэтому столбик пунктиром.','S','Продажи 11-го потока пока в основном у выпускников. Новые обычно покупают в последние недели до старта.'],
-    l_aug:['Август: 188 заявок','Заявки на диагностику за месяц.','S','Близко к нужным 208.'],
-    l_sep:['Сентябрь: 247 заявок','Заявки на диагностику за месяц.','S','Больше, чем нужно для плана. Такой поток реален.'],
-    l_oct:['Октябрь, 1–26: 50 заявок','В том числе неделя, когда заявки почти не приходили из-за сбоя интеграции GetCourse → amoCRM.','S','Главный разрыв: заявок нужно в 3–4 раза больше.'],
+    l_aug:['Август: 188 заявок','Заявки на диагностику за месяц.','S','Количество близко к нужному, но важен и источник заявок.'],
+    l_sep:['Сентябрь: 247 заявок','Заявки на диагностику за месяц.','S','Заявок больше нужного, а продаж — 9: заявки из ботов и эфиров покупают реже, чем с подкастов.'],
+    l_oct:['Октябрь, 1–26: 50 заявок','В том числе неделя, когда заявки почти не приходили из-за сбоя интеграции GetCourse → amoCRM.','S','Главный разрыв: заявок нужно в 4–5 раз больше, и большая часть — с подкастов и таргета.'],
     s_15:['До 15 минут','Ответ в первые 15 минут после передачи заявки.','A, amoCRM','Цель: 50% в ноябре, 80% в декабре.'],
     s_60:['15–60 минут','Ответ в течение часа.','A','Человек ещё помнит, зачем оставил заявку, но берёт трубку реже.'],
     s_4h:['1–4 часа','Ответ через несколько часов.','A','Шанс довести до разговора падает в разы уже через час.'],
@@ -989,72 +1183,101 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     s_late:['Позже','На следующий день и позже.','A','Большая часть таких заявок не доходит до диагностики.'],
     s_none:['Без ответа','Заявку передали, ответа не было.','A: сентябрь 58 из 249, октябрь 58 из 158','Самые обидные потери: человек сам попросил связаться. Цель — 0.'],
     w_op:['201 из 213','Новые продажи «Метода» 2026 года, у которых в заказе указан менеджер.','S','«Метод» продаётся в разговоре, поэтому план — у отдела продаж.'],
+    w_pod:['Подкасты: 18%','77 из 423 заявок с подкастов закончились покупкой «Метода».','таблица эфиров, первое касание, 2025–2026','Подкастовая заявка теплее: человек уже слышал Лену. Цифру перепроверяем за 90 дней по данным 2026 года.'],
     w_ks:['КС → «Метод» за 90 дней: 12,9%','15 из 116 новых покупателей КС купили «Метод».','S','КС — ступень доверия: после него «Метод» покупают в 3–4 раза чаще, чем после «Перепрошивки» (3,6%).'],
-    w_72:['Оффер 72 часа: 10,4%','Группы КС 2.08, 5.09, 10.10: 7 из 67 перешли в «Метод».','S','Второй путь к плану. Цель декабря — 15%.'],
-    w_group:['Группа КС: 25 в месяц','Среднее по трём группам: 27, 20, 23.','S','Цель декабря — 30 человек в группе.'],
+    w_mk:['Живой МК Лены: 23 покупки','118 участников мастер-класса 3 октября, покупки за 30 дней.','Бизон','Живой МК перед группой КС — главный источник покупателей «Кода сознания».'],
     o_week:['Новые продажи в неделю','Месячная цель ÷ 4,33 недели.','расчёт','Эта цифра стоит в таблице планёрки каждую неделю.'],
-    o_nov:['Заявки в ноябре','По сегодняшним конверсиям: (цель − 25 × 10,4%) ÷ 7,4%.','S','В ноябре конверсии только начинают расти, поэтому считаем осторожно.'],
-    o_dec:['Заявки в декабре','По целевым конверсиям: (цель − 30 × 15%) ÷ 10,5%.','S + цели','Если заявок останется столько же, сколько в ноябре, продаж будет больше плана.'],
-    o_rev:['Продажи «Метода» в месяц','Новые продажи × средний чек 209 399 ₽.','S: структура тарифов 2026','Сумма оплат клиентов до комиссий и налогов.'],
-    w_leads:['Заявки: 48 в неделю','208 в месяц ÷ 4,33.','расчёт','В декабре минимум 30, но поток не снижаем: при выросших конверсиях те же заявки дают больше продаж.'],
-    w_new:['Новые продажи: 4,2 в неделю','18 ÷ 4,33.','расчёт','Главная цифра плана.'],
-    w_ks1:['Продажи КС в неделю','Группа КС ÷ 4,33: 25 в ноябре, 30 в декабре.','S','КС — второй путь в «Метод».'],
-    w_ks2:['Переходы КС → «Метод»','25 × 10,4% в ноябре, 30 × 15% в декабре, ÷ 4,33.','S','Считаем отдельно, чтобы видеть, работает ли второй путь.'],
-    w_diag:['Проведённые диагностики','Этап «Диагностика проведена» в новой воронке amoCRM.','amoCRM','В ноябре измеряем базу, в декабре цель — около 45 в месяц.'],
-    f_leads:['129 заявок в месяц','13,5 продажи ÷ (35% × 30%).','расчёт','Минимум для декабря. Поток 48 в неделю даёт запас.'],
-    f_touch:['Ответ каждой заявке','Ни одной без ответа, 80% — в первые 15 минут.','A: сейчас 7% за 15 минут','Быстрый ответ — самый дешёвый способ поднять доходимость.'],
-    f_diag:['45 проведённых диагностик','129 × 35%.','расчёт','При 3 менеджерах это меньше одной диагностики в день на человека.'],
-    f_m1:['13,5 продажи через диагностику','45 × 30%.','расчёт','Основная часть плана.'],
-    f_ks:['Группа КС: 30','Цель декабря.','S: в августе было 27','Каждые 10 человек в группе — ещё ≈1,5 «Метода».'],
-    f_m2:['4,5 перехода в «Метод»','30 × 15%.','расчёт','Второй путь, его ведёт отдел продаж.'],
-    f_total:['18 новых продаж','13,5 через диагностику + 4,5 через КС.','расчёт','Повторы выпускников — сверху, вне плана.'],
+    o_leads:['Лиды с подкастов и таргета','Сколько регистраций с меткой нужно в неделю.','таблица эфиров, S, расчёт','Лиды → заявки (6%, цель 8%) → «Метод» (18%, цель 30%).'],
+    o_apps:['Заявки на диагностику','Все заявки в неделю: с трафика и из ботов и эфиров (13).','расчёт','Нагрузка на отдел продаж и главная цифра входа.'],
+    o_mkt:['Трафик в месяц','Заявки с трафика × цена заявки.','таблица эфиров','Сегодня заявка ≈14 340 ₽, по цели ≈9 400 ₽ (лид 750 ₽ при 8%).'],
+    w_lpaid:['Лиды с подкастов и таргета','701 при сегодняшних конверсиях и 239 при целевых — для плана 40.','расчёт','Ноябрь — по сегодняшним конверсиям, декабрь — по целевым.'],
+    w_apaid:['Заявки с трафика','Лиды × 6% сейчас, × 8% по цели.','расчёт','Главный источник продаж плана.'],
+    w_abase:['Заявки из ботов и эфиров','Сегодня ≈13 в неделю.','S: октябрь','Без затрат на трафик. Рычаг — доходимость до эфира.'],
+    w_new:['Новые продажи: 9,2 в неделю','40 ÷ 4,33.','расчёт','Главная цифра плана.'],
+    w_ks1:['Продажи КС в неделю','Группа КС ÷ 4,33: 25 в ноябре, 35 по цели.','S','КС — третий путь в «Метод».'],
+    w_ks2:['Переходы КС → «Метод»','25 × 10,4% в ноябре, 35 × 18% по цели, ÷ 4,33.','S','Считаем отдельно, чтобы видеть, работает ли этот путь.'],
+    w_diag:['Проведённые диагностики','Этап «Диагностика проведена» в новой воронке amoCRM.','amoCRM','В ноябре измеряем базу, по цели — около 63 в месяц.'],
+    f_lpaid:['1 037 лидов','Регистрации с меткой подкаста или таргета.','расчёт','Сколько нужно при целевых конверсиях.'],
+    f_apaid:['83 заявки с трафика','1 037 × 8%.','расчёт','Каждая заявка стоит денег — ответ в первые 15 минут.'],
+    f_mpaid:['24,9 продажи с трафика','83 × 30%.','расчёт','Основная часть плана.'],
+    f_abase:['56 заявок из ботов и эфиров','Сегодняшний поток, ≈13 в неделю.','S: октябрь','Не требует затрат на трафик.'],
+    f_dbase:['25 проведённых диагностик','56 × 45%.','расчёт','Сколько разговоров даёт этот путь.'],
+    f_mbase:['8,8 продажи','25 × 35%.','расчёт','Вклад ботов и эфиров.'],
+    f_ks:['Группа КС: 35','Цель.','S: в августе было 27','Каждые 10 человек в группе — ещё ≈1,8 «Метода».'],
+    f_m2:['6,3 перехода в «Метод»','35 × 18%.','расчёт','Третий путь, его ведёт отдел продаж.'],
+    f_total:['40 новых продаж','24,9 с трафика + 8,8 из ботов и эфиров + 6,3 через КС.','расчёт','Повторы выпускников — сверху, вне плана.'],
+    r_l2a:['Лид → заявка: 6% → 8%','Сколько лидов оставляют заявку на диагностику.','таблица эфиров: 423 из 7 032; Бизон: из пришедших на эфир заявку оставляют 28%','Рычаги: приглашение на диагностику на 40–45-й минуте эфира, отдельная кнопка, дожим в боте.'],
     r_none:['Без ответа: 23–37% → 0%','Доля переданных заявок без ответа.','A, amoCRM','Самое быстрое улучшение: эти люди уже оставили заявку.'],
     r_15:['Ответ за 15 минут: 7% → 50% → 80%','Доля заявок с ответом в первые 15 минут.','A; HBR 2011; Oldroyd (MIT / InsideSales)','Исследование 15 000 заявок: при ответе за 5 минут вместо 30 заявку в 21 раз чаще удаётся довести до разговора, а дозвониться — в 100 раз чаще.'],
-    r_diag:['Заявка → проведённая диагностика: 35%','Сколько заявок доходят до проведённой диагностики.','vc.ru (24 кейса): записались → пришли — от 68%; GetCourse: 9% → 22% за 2 месяца','35% — амбициозно, но реально с быстрым ответом и напоминаниями. Цель уточним 30.11 по своей базе.'],
-    r_close:['Диагностика → «Метод»: 30%','Сколько проведённых диагностик заканчиваются покупкой.','практики: 30–50% при сильной диагностике; до 70% в дорогих продуктах (vc.ru)','Берём нижнюю границу ориентира: чек высокий, решение непростое.'],
-    r_conv:['Заявка → «Метод»: 7,4% → 10,5%','Произведение двух строк выше.','S: август, 12 из 163','+3 п.п. к конверсии — на ≈80 заявок в месяц меньше для того же плана.'],
-    r_ks:['Группа КС: 30','Покупатели каждой группы.','S: 27, 20, 23','Больше людей в группе — больше переходов в «Метод».'],
-    r_ks72:['КС → «Метод»: 15%','Переход по офферу за 72 часа.','S: 10,4% за 72 часа, 12,9% за 90 дней','Люди и так доходят до 13%. Задача — чтобы это происходило быстрее и чаще.'],
-    n1:['Заявки','48 заявок на диагностику в неделю.','S: октябрь ≈13 в неделю','Самое большое условие. Без него план не выполнить ни при каких конверсиях.'],
+    r_diag:['Заявка → проведённая диагностика: 45%','Сколько заявок доходят до проведённой диагностики.','vc.ru (24 кейса): записались → пришли — от 68%; GetCourse: 9% → 22% за 2 месяца','Отвечает Арина. Этап в amoCRM настраивает Зиннур. Цель уточним 30.11 по своей базе.'],
+    r_close:['Диагностика → «Метод»: 35%','Сколько проведённых диагностик заканчиваются покупкой.','практики: 30–50% при сильной диагностике; до 70% в дорогих продуктах (vc.ru)','Чуть выше нижней границы ориентира: чек высокий, решение непростое.'],
+    r_conv:['Заявка → «Метод»: 7,4% → ≈16%','Произведение двух строк выше.','S: август, 12 из 163','Для заявок из ботов, эфиров и рассылок.'],
+    r_pod:['Заявка с подкастов → «Метод»: 18% → 30%','Подкастовые заявки покупают чаще.','таблица эфиров: 77 из 423','Цель — допущение. Цифру 18% перепроверяем за 90 дней.'],
+    r_e2e:['Сквозная: 1,1% → 2,4%','Из 100 лидов с подкаста «Метод» сегодня покупает ≈1 человек, по цели — 2–3.','расчёт','Сколько лидов нужно на одну продажу: сегодня ≈91, по цели ≈42.'],
+    r_ks:['Группа КС: 35','Покупатели каждой группы.','S: 27, 20, 23','Больше людей в группе — больше переходов в «Метод».'],
+    r_ks72:['КС → «Метод»: 18%','Переход по офферу за 72 часа.','S: 10,4% за 72 часа, 12,9% за 90 дней','Люди и так доходят до 13%. Задача — чтобы это происходило быстрее и чаще.'],
+    n1:['Трафик','42 заявки в неделю с подкастов и таргета.','расчёт для плана 40','Самое большое условие. Без него план не выполнить ни при каких конверсиях.'],
+    n7:['Метки','У каждого эфира своя utm-метка и промокод.','таблица эфиров','Иначе цену заявки по эфиру не посчитать, и правило «стоп или повтор» не работает.'],
+    n1b:['Заявки из ботов и эфиров','13 в неделю.','S: октябрь','От ссылки в боте до эфира доходит 5,4% — главный рычаг.'],
     n2:['Правило ответа','15 минут, ни одной заявки без ответа, дежурства.','A','Дешёвый способ поднять доходимость до диагностики.'],
     n3:['Этап диагностики в amoCRM','Новая воронка с этапами.','срок — 2.11','Первое измерение диагностик: без него конверсии 35% и 30% не проверить.'],
-    n4:['Заявки не теряются','Интеграции GetCourse → amoCRM.','S: сбой 19–20.10','Неделя без заявок — минус ≈3 продажи «Метода».'],
+    n4:['Заявки не теряются','Интеграции GetCourse → amoCRM.','S: сбой 19–20.10','Неделя без заявок — минус несколько продаж «Метода».'],
     n5:['Дашборд с планом','Продукты, звонки всех менеджеров, план рядом с фактом.','договорённость на планёрке','Цифры к планёрке собираются сами, а не вручную.'],
-    n6:['План у каждого','Личная цифра на месяц и неделю.','Арина','План отдела складывается из личных планов.'],
-    x_leads:['Заявок в месяц','(цель − продажи через КС) ÷ (доходимость × конверсия диагностики).','расчёт','Это цифра Миши.'],
-    x_diag:['Проведённых диагностик','Продажи через диагностику ÷ конверсия диагностики.','расчёт','Это нагрузка на отдел продаж.'],
-    x_mix:['Откуда продажи','Сколько продаж даёт каждый путь.','расчёт','Чем больше даёт КС, тем меньше нужно заявок.'],
+    c_pod:['Подкасты, все','17 эфиров 2026 года.','таблица эфиров','Окупаются в среднем в 1,95 раза — меньше, чем можно, из-за слабых площадок.'],
+    c_hit:['Подкасты-хиты','6 площадок, которые окупились.','таблица эфиров','Повторяемые площадки — основа плана трафика.'],
+    c_rest:['Остальные подкасты','11 эфиров, которые не окупились.','таблица эфиров','Заявка дороже 25 тысяч — сигнал не повторять.'],
+    c_fb:['Таргет','Тест: 157 регистраций, 2 продажи «Метода».','лист «ИИ» в таблице эфиров','Выборка маленькая. Перезапуск — на малом бюджете с проверкой цены заявки.'],
+    c_ya:['Яндекс Директ','Тест 5–18.10: 201 человек, 2 заявки.','A','Пока не окупается. Решение — по итогам теста.'],
+    c_base:['Боты, эфиры, база','Заявки без затрат на трафик.','S, Бизон','Цена — время команды, а не деньги на трафик.'],
+    b_40n:['40 при сегодняшних конверсиях','701 лид и 55 заявок в неделю.','расчёт','Трафик — 35% поступлений: слишком дорого.'],
+    b_40t:['40 при целевых','239 лидов и 32 заявки в неделю.','расчёт','Трафик — 10% поступлений: в ориентире.'],
+    c_lead:['Цена лида и заявки','Заявка = цена лида ÷ конверсия лида в заявку.','таблица эфиров','Рост конверсии лида в заявку сам удешевляет заявку.'],
+    g_rep:['Повторяем','Заявка до 10 000 ₽ через 3–4 недели после выхода.','таблица эфиров','Такие площадки окупаются в разы.'],
+    g_watch:['Смотрим ещё раз','Заявка 10 000–25 000 ₽.','таблица эфиров','Повторяем, только если были продажи.'],
+    g_stop:['Не повторяем','Заявка дороже 25 000 ₽.','расчёт: порог окупаемости ≈23 тыс.','Дороже — каждая продажа в минус.'],
+    m_hit:['Повторы хитов','65% трафика.','предложение','Средний хит — ≈312 тысяч и ≈45 заявок.'],
+    e_link:['От ссылки до эфира: 5,4%','6 197 ссылок → 739 переходов → 336 человек в комнате.','Бизон','Рост с 5,4% до 8% — плюс половина заявок из эфиров без затрат.'],
+    e_auto:['Авто-эфиры','127 эфиров, 193 человека, 54 заявки, 5 покупок.','Бизон','Заявки есть — значит, продаёт скорость ответа и диагностика.'],
+    e_time:['Когда звать на диагностику','Предложения на 61–71-й минуте, смотрят в среднем 60 минут.','Бизон','Проверяем приглашение на 40–45-й минуте отдельной кнопкой.'],
+    x_leads:['Лиды с трафика','Заявки с трафика ÷ лид → заявка.','расчёт','Цифра плана трафика.'],
+    x_apps:['Заявки на диагностику','С трафика + из ботов и эфиров.','расчёт','Нагрузка на вход отдела продаж.'],
+    x_mix:['Откуда продажи','Сколько продаж даёт каждый путь.','расчёт','Чем больше дают боты, эфиры и КС, тем меньше нужно трафика.'],
     x_week:['Продаж в неделю','Цель ÷ 4,33.','расчёт','Цифра для таблицы планёрки.'],
-    x_load:['Нагрузка на менеджера','Диагностики ÷ менеджеры ÷ 22 рабочих дня.','ориентир практиков: 3–4 в день максимум (vc.ru)','Если больше 3 — нужен ещё человек или больше продаж через КС.'],
-    x_rev:['Продажи «Метода»','Цель × средний чек 209 399 ₽.','S','Сумма оплат клиентов до комиссий и налогов.'],
-    x_now:['При сегодняшних конверсиях','(цель − 25 × 10,4%) ÷ 7,4%.','S','Показывает, сколько заявок экономит рост конверсий.'],
-    rm_lena:['План месяца','Выполнение уровней 14 / 18 / 22.','финмодель, S','Чтобы деньги были прогнозируемыми и ничего не горело.'],
-    rm_arina:['Новые продажи «Метода»','18 в месяц, 4,2 в неделю, по менеджерам.','GetCourse, amoCRM','Главная цифра плана.'],
-    rm_misha:['Заявки на диагностику','48 в неделю, по каналам.','GetCourse','Вход в воронку: от него зависят все остальные цифры.'],
-    rm_zinur:['Заявка → проведённая диагностика','Доля заявок, дошедших до этапа «Диагностика проведена».','amoCRM','Показывает, где теряются люди между заявкой и продажей.'],
+    x_mkt:['Трафик в месяц','Заявки с трафика × цена заявки.','расчёт','Бюджет на подкасты и таргет.'],
+    x_cps:['Трафик на одну продажу','Цена заявки ÷ заявка → «Метод».','расчёт','Ориентир — до 50 тысяч.'],
+    x_share:['Доля трафика в поступлениях','Трафик ÷ (продажи × собранный чек ≈161 тыс. после комиссии + ≈1 млн других поступлений).','расчёт, финмодель','Ориентир — до 15–18%.'],
+    x_diag:['Проведённые диагностики','Все заявки × доходимость.','расчёт','Это нагрузка на отдел продаж.'],
+    x_load:['Нагрузка на менеджера','Диагностики ÷ менеджеры ÷ 22 рабочих дня.','ориентир практиков: 3–4 в день максимум (vc.ru)','Если больше 3 — нужен ещё человек.'],
+    rm_lena:['План месяца','Выполнение уровней 35 / 40 / 50.','финмодель, S','Чтобы деньги были прогнозируемыми и ничего не горело.'],
+    rm_arina:['Новые продажи «Метода»','40 в месяц, 9,2 в неделю, по менеджерам.','GetCourse, amoCRM','Главная цифра плана.'],
+    rm_misha:['Заявки из ботов, эфиров и рассылок','13 в неделю.','GetCourse','Поток заявок без затрат на трафик.'],
+    rm_zinur:['Цифры воронки','Этапы amoCRM, метки, лиды и заявки по каналам — к 10:00 понедельника.','amoCRM, GetCourse','Без верных цифр нельзя ни планировать трафик, ни разбирать отклонения.'],
     rm_kris:['Дашборд без ручных правок','Продукты, звонки, план и факт в одном месте.','GetCourse','Когда дашборд готов, подготовка к планёрке занимает минуты.'],
-    rm_cath:['План и факт','Продажи и конверсии по неделям.','таблица планёрки','Чтобы отклонение было видно на этой неделе, а не в конце месяца.'],
+    rm_zarina:['Таблица эфиров','Цена, лиды, заявки и оплаты по каждому эфиру.','метки, GetCourse','По ней принимаем решение «стоп или повтор».'],
+    rm_cath:['План и факт','Продажи, лиды и конверсии по неделям.','таблица планёрки','Чтобы отклонение было видно на этой неделе, а не в конце месяца.'],
     a_cath:['Цифры недели, 5 минут','Одна таблица план-факт на экране.','таблица к 12:00','Все видят одно и то же, обсуждение начинается с цифр.'],
     a_arina:['Продажи, 7 минут','Самый большой блок: здесь главная цифра плана.','GetCourse, amoCRM','Формат: план, факт, что делаю, что нужно от других.'],
-    a_misha:['Заявки, 5 минут','Количество и каналы.','GetCourse','Если заявок меньше 80% — сразу говорит, что включает.'],
-    a_zinur:['Воронка, 5 минут','Этапы диагностики и сбои.','amoCRM','Без этого не понять, почему заявки не превращаются в продажи.'],
+    a_traffic:['Лиды и заявки, 6 минут','Заявки из ботов и эфиров, лиды и цена заявки по подкастам и таргету.','GetCourse, таблица эфиров','Если меньше 80% плана — сразу говорим, что включаем.'],
+    a_zinur:['Данные, 4 минуты','Этапы диагностики, метки, сбои.','amoCRM, GetCourse','Без этого не понять, почему заявки не превращаются в продажи.'],
     a_kris:['Дашборд, 3 минуты','Статус доработок.','GetCourse','Временный блок.'],
     a_dev:['Отклонения, 10 минут','Только строки ниже 80% плана или без данных.','таблица план-факт','Главная часть: отклонение превращается в действие с владельцем и сроком.'],
     a_lena:['Решения, 5 минут','Что решает Лена и фокус недели.','—','Лена слышит цифры и принимает решения.'],
     p1:['Неделя закрыта','Все сделки на нужных этапах amoCRM.','amoCRM','Иначе цифры понедельника неверные.'],
-    p2:['Выгрузка в 10:00','Зинур — этапы, Крис — оплаты.','amoCRM, GetCourse','Пока дашборд не готов.'],
+    p2:['Выгрузка в 10:00','Зиннур — этапы и метки, Крис — оплаты.','amoCRM, GetCourse','Пока дашборд не готов.'],
     p3:['Таблица к 12:00','Каждый вносит свою строку и причину, если не в плане.','таблица','На планёрке не считаем.'],
     p4:['Отклонения к 12:30','Строки ниже 80% отмечены.','таблица','Планёрка начинается с готового списка.'],
     p5:['Планёрка 13:00','40 минут по порядку.','—','Протокол до 15:00.'],
     x_month:['Темп месяца','Сколько новых продаж с начала месяца и где мы должны быть по времени.','пример','Отставание видно на второй неделе, а не 30-го числа.'],
-    x_r1:['Заявки на диагностику','Факт недели из GetCourse.','GetCourse · Миша','40 из 48 = 83% — «рядом», не разбираем.'],
+    x_r0:['Лиды с трафика','Регистрации с меткой за неделю.','метки · Зиннур, таблица эфиров','520 из 701 = 74% — отклонение.'],
+    x_r1:['Заявки из ботов и эфиров','Факт недели из GetCourse.','GetCourse · Миша','12 из 13 = 92% — «рядом», не разбираем.'],
     x_r2:['Заявки без ответа','Доля заявок без ответа за неделю.','amoCRM · Арина','Цель 0%: всё выше — отклонение.'],
     x_r3:['Ответ за 15 минут','Доля заявок с ответом в первые 15 минут.','amoCRM','34% при цели 50% — ниже 80% плана.'],
-    x_r4:['Проведённые диагностики','Этап новой воронки.','amoCRM · Зинур','Первые 4 недели только измеряем.'],
+    x_r4:['Проведённые диагностики','Этап новой воронки.','amoCRM · Арина','Первые 4 недели только измеряем.'],
     x_r5:['Новые продажи «Метода»','Новые покупатели по полной цене.','GetCourse · Арина','Главная цифра.'],
     x_r6:['Продажи КС','Покупатели КС за неделю.','GetCourse','До открытия группы цифра почти всегда ниже — это видно в причине.'],
-    x_r7:['КС → «Метод»','Переходы по офферу 72 часа.','GetCourse','Проверяем, работает ли второй путь.'],
+    x_r7:['КС → «Метод»','Переходы по офферу 72 часа.','GetCourse','Проверяем, работает ли этот путь.'],
     x_r8:['Повторы выпускников','Покупки «Метода» выпускниками.','GetCourse','Учитываем, но в план не включаем.'],
+    x_r9:['Цена заявки по эфиру','Через 3–4 недели после выхода.','таблица эфиров · Зарина','До 10 000 ₽ — повторяем площадку.'],
     x_st_amb:['Статус «рядом»','80–99% плана.','правило планёрки','Не разбираем, но следим.'],
     x_st_red:['Статус «отклонение»','Ниже 80% плана или нарушено правило.','правило планёрки','Обязательно: причина, действие, кто, срок.'],
     x_st_blue:['Статус «меряем»','Цель ещё не поставлена.','правило планёрки','Собираем базу 4 недели.'],
@@ -1071,6 +1294,7 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
     v_check:['Когда проверяем','Планёрка, на которой смотрим результат.','—','Замыкает цикл: решили → сделали → проверили.']
   };
   const fmt=(v,d=1)=>v.toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const int=v=>Math.round(v).toLocaleString('ru-RU');
   const $=id=>document.getElementById(id);
 
   /* подсказки */
@@ -1118,59 +1342,76 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
   addEventListener('hashchange',()=>open(location.hash.slice(1),true));
   open(location.hash.slice(1)||'now',false);
 
-  /* уровни */
-  const CHK=209399,WK=4.33;
-  const nov=g=>Math.max(0,g-25*0.104)/0.074, dec=g=>Math.max(0,g-30*0.15)/(0.35*0.30);
-  const LV=[['Минимум',14],['Средний',18],['Амбициозный',22]];
-  const lv=[...document.querySelectorAll('.lvl')];
-  function setL(i){
-    lv.forEach((b,j)=>{b.setAttribute('aria-checked',j===i);b.tabIndex=j===i?0:-1});
-    const [n,g]=LV[i];
-    $('lvName').textContent='Уровень «'+n+'» · что нужно в месяц';
-    $('o1').textContent=fmt(g/WK);
-    $('o2').textContent=Math.round(nov(g));$('o2s').textContent='заявок в ноябре · '+Math.round(nov(g)/WK)+' в неделю';
-    $('o3').textContent=Math.round(dec(g));$('o3s').textContent='заявок в декабре · '+Math.round(dec(g)/WK)+' в неделю';
-    $('o4').textContent=fmt(g*CHK/1e6,2);
+  /* модель: те же формулы, что в финмодели (лист «Воронка и маркетинг») */
+  const WK=4.33, CHKN=185528*(1-0.132), OTHER=1.01e6;
+  const SC=[{l2a:423/7032,pod:77/423,cpl:863,ba:56,bc:0.074,ks:25,kc:0.104},
+            {l2a:0.08,pod:0.30,cpl:750,ba:56,bc:0.45*0.35,ks:35,kc:0.18}];
+  function need(g,p){
+    const pk=p.ks*p.kc, pb=p.ba*p.bc, paid=Math.max(0,g-pk-pb);
+    const apps=paid/p.pod, leads=apps/p.l2a, mkt=apps*p.cpl/p.l2a;
+    return {pk,pb,paid,apps,leads,mkt,all:p.ba+apps,share:mkt/(g*CHKN+OTHER)};
   }
-  lv.forEach((b,i)=>{b.addEventListener('click',()=>setL(i));b.addEventListener('keydown',e=>{let j=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%3;if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i+2)%3;if(j!=null){e.preventDefault();setL(j);lv[j].focus()}})});
-  setL(1);
+
+  /* уровни */
+  const LV=[['Минимум',35],['Хорошо',40],['Оптимизм',50]];
+  const lv=[...document.querySelectorAll('.lvl')], cvb=[...document.querySelectorAll('[data-cv]')];
+  let curL=1,curC=0;
+  function setL(){
+    lv.forEach((b,j)=>{b.setAttribute('aria-checked',j===curL);b.tabIndex=j===curL?0:-1});
+    cvb.forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.cv===curC)));
+    const [n,g]=LV[curL], r=need(g,SC[curC]);
+    $('lvName').textContent='Уровень «'+n+'» · что нужно в неделю';
+    $('o1').textContent=fmt(g/WK);
+    $('o2').textContent=int(r.leads/WK);$('o2s').textContent='лидов с подкастов и таргета в неделю · '+int(r.leads)+' в месяц';
+    $('o3').textContent=int(r.all/WK);$('o3s').textContent='заявок на диагностику в неделю · из них с трафика '+int(r.apps/WK);
+    $('o4').textContent=fmt(r.mkt/1e6,2);$('o4s').textContent='млн ₽ на трафик в месяц · '+Math.round(r.share*100)+'% поступлений';
+  }
+  lv.forEach((b,i)=>{b.addEventListener('click',()=>{curL=i;setL()});b.addEventListener('keydown',e=>{let j=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%3;if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i+2)%3;if(j!=null){e.preventDefault();curL=j;setL();lv[j].focus()}})});
+  cvb.forEach(b=>b.addEventListener('click',()=>{curC=+b.dataset.cv;setL()}));
+  setL();
 
   /* клетки потока */
   const cells=$('cells');
   for(let i=0;i<28;i++){const c=document.createElement('i');c.className=i<15?'g':(i<18?'n':'need');cells.appendChild(c)}
 
   /* симулятор */
-  const S={goal:'s_goal',ld:'s_ld',dc:'s_dc',ks:'s_ks',kc:'s_kc',mg:'s_mg'};
-  const DEF={goal:18,ld:35,dc:30,ks:30,kc:15,mg:3};
+  const S={goal:'s_goal',l2a:'s_l2a',pod:'s_pod',cpl:'s_cpl',ba:'s_ba',ld:'s_ld',dc:'s_dc',ks:'s_ks',kc:'s_kc',mg:'s_mg'};
+  const NOW={goal:40,l2a:6.02,pod:18.2,cpl:863,ba:56,ld:25,dc:29.6,ks:25,kc:10.4,mg:3};
+  const DEC={l2a:8,pod:30,cpl:750,ba:56,ld:45,dc:35,ks:35,kc:18};
   const el=k=>$(S[k]);
-  const KEY='weiler-plan-sim-v1';
-  try{const sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv)Object.keys(DEF).forEach(k=>{if(sv[k]!=null)el(k).value=sv[k]})}catch(e){}
+  const KEY='weiler-plan-sim-v4';
+  try{const sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv)Object.keys(NOW).forEach(k=>{if(sv[k]!=null)el(k).value=sv[k]})}catch(e){}
   function paint(inp){const p=(inp.value-inp.min)/(inp.max-inp.min)*100;inp.style.setProperty('--p',p+'%')}
+  const pct=v=>fmt(v,v%1?1:0)+'%';
   function calc(){
     const v={};Object.keys(S).forEach(k=>{v[k]=parseFloat(el(k).value);paint(el(k))});
-    $('v_goal').textContent=v.goal;$('v_ld').textContent=v.ld+'%';$('v_dc').textContent=v.dc+'%';$('v_ks').textContent=v.ks;$('v_kc').textContent=fmt(v.kc,v.kc%1?1:0)+'%';$('v_mg').textContent=v.mg;
-    $('v_lm').textContent=fmt(v.ld*v.dc/100)+'%';
-    const p2=Math.min(v.goal,v.ks*v.kc/100),p1=Math.max(0,v.goal-p2);
-    const diag=v.dc>0?p1/(v.dc/100):0,leads=v.ld>0?diag/(v.ld/100):0;
-    $('r_leads').textContent=Math.round(leads);$('r_leadsw').textContent=Math.round(leads/WK)+' в неделю';
-    $('r_diag').textContent=Math.round(diag);$('r_diagw').textContent=fmt(diag/WK)+' в неделю';
-    $('r_p1').textContent=fmt(p1);$('r_p2').textContent=fmt(p2);
-    $('mx1').style.width=(v.goal?p1/v.goal*100:0)+'%';$('mx2').style.width=(v.goal?p2/v.goal*100:0)+'%';
+    $('v_goal').textContent=v.goal;$('v_l2a').textContent=pct(v.l2a);$('v_pod').textContent=pct(v.pod);$('v_cpl').textContent=int(v.cpl);$('v_cpa').textContent=int(v.cpl/(v.l2a/100));
+    $('v_ba').textContent=v.ba;$('v_ld').textContent=pct(v.ld);$('v_dc').textContent=pct(v.dc);$('v_ks').textContent=v.ks;$('v_kc').textContent=pct(v.kc);$('v_mg').textContent=v.mg;
+    const bc=v.ld*v.dc/1e4;$('v_lm').textContent=fmt(bc*100)+'%';
+    const r=need(v.goal,{l2a:v.l2a/100,pod:v.pod/100,cpl:v.cpl,ba:v.ba,bc:bc,ks:v.ks,kc:v.kc/100});
+    const p3=Math.min(v.goal,r.pk),p2=Math.min(v.goal-p3,r.pb),p1=r.paid;
+    $('r_leads').textContent=int(r.leads);$('r_leadsw').textContent=int(r.leads/WK)+' в неделю';
+    $('r_apps').textContent=int(r.all);$('r_appsw').textContent=int(r.all/WK)+' в неделю · с трафика '+int(r.apps);
+    $('r_p1').textContent=fmt(p1);$('r_p2').textContent=fmt(p2);$('r_p3').textContent=fmt(p3);
+    const G=v.goal||1;$('mx1').style.width=p1/G*100+'%';$('mx2').style.width=p2/G*100+'%';$('mx3').style.width=p3/G*100+'%';
     $('r_week').textContent=fmt(v.goal/WK);
+    $('r_mkt').textContent=fmt(r.mkt/1e6,2)+' млн ₽';
+    $('r_cps').textContent=r.paid>0?fmt(r.mkt/r.paid/1e3)+' тыс. ₽':'—';
+    const sh=$('r_share');sh.textContent=Math.round(r.share*100)+'%';sh.className=r.share>0.18?'warn':'';
+    const diag=r.all*v.ld/100;$('r_diag').textContent=int(diag);
     const load=diag/v.mg/22,ld=$('r_load');ld.textContent=fmt(load);ld.className=load>3?'warn':'';
-    $('r_rev').textContent=fmt(v.goal*CHK/1e6,2)+' млн ₽';
-    const now=nov(v.goal);$('r_now').textContent=Math.round(now);
-    const diff=Math.round(now-leads),cmp=$('r_cmp');
+    const base=need(v.goal,SC[0]),cmp=$('r_cmp');
     cmp.replaceChildren();
-    const b=document.createElement('b');
-    if(diff>0){b.textContent=diff+' заявок в месяц';cmp.append('Рост конверсий экономит ',b,' — их не нужно привлекать.')}
-    else if(diff<0){b.textContent=(-diff)+' заявок больше';cmp.append('При этих настройках нужно на ',b,', чем при сегодняшних конверсиях.')}
-    else cmp.append('Столько же заявок, сколько при сегодняшних конверсиях.');
+    const dl=Math.round(base.leads-r.leads),dm=base.mkt-r.mkt;
+    if(Math.abs(dl)<base.leads*0.02&&Math.abs(dm)<base.mkt*0.02+1)cmp.append('Это сегодняшние конверсии и цена заявки: от них считаем ноябрь.');
+    else if(dl>0){const b=document.createElement('b');b.textContent=int(dl)+' лидов и '+fmt(Math.max(0,dm)/1e6,2)+' млн ₽ в месяц';cmp.append('По сравнению с сегодняшними конверсиями эти настройки экономят ',b,'.')}
+    else{const b=document.createElement('b');b.textContent=int(-dl)+' лидов и '+fmt(Math.max(0,-dm)/1e6,2)+' млн ₽';cmp.append('Нужно больше, чем при сегодняшних конверсиях: ещё ',b,'.')}
     let name,txt,low=false;
-    if(v.goal<14){name='Ниже минимума';txt='не опускаемся ниже 14';low=true}
-    else if(v.goal<18){name='Минимум';txt='нижняя граница'}
-    else if(v.goal<22){name='Средний';txt='рабочий план'}
-    else{name='Амбициозный';txt='уровень июня и выше'}
+    if(v.goal<35){name='Ниже минимума';txt='не опускаемся ниже 35';low=true}
+    else if(v.goal<40){name='Минимум';txt='нижняя граница'}
+    else if(v.goal<50){name='Хорошо';txt='рабочий план'}
+    else{name='Оптимизм';txt='запас на развитие'}
+    if(r.share>0.18)txt+=' · трафик дороже ориентира 18%';
     if(load>3)txt+=' · нагрузка выше 3 диагностик в день';
     $('r_pill').textContent=name;$('r_pill').classList.toggle('low',low);$('r_vtxt').textContent=txt;
     document.querySelectorAll('[data-goal]').forEach(x=>x.setAttribute('aria-pressed',String(+x.dataset.goal===v.goal)));
@@ -1179,8 +1420,8 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
   Object.keys(S).forEach(k=>el(k).addEventListener('input',calc));
   document.querySelectorAll('[data-goal]').forEach(b=>b.addEventListener('click',()=>{el('goal').value=b.dataset.goal;calc()}));
   document.querySelectorAll('.step').forEach(b=>b.addEventListener('click',()=>{const i=$(b.dataset.for);i.value=Math.min(+i.max,Math.max(+i.min,+i.value+(+b.dataset.d)));calc()}));
-  $('pr_dec').addEventListener('click',()=>{el('ld').value=35;el('dc').value=30;el('ks').value=30;el('kc').value=15;calc()});
-  $('reset').addEventListener('click',()=>{Object.keys(DEF).forEach(k=>el(k).value=DEF[k]);calc()});
+  $('pr_dec').addEventListener('click',()=>{Object.keys(DEC).forEach(k=>el(k).value=DEC[k]);calc()});
+  $('pr_now').addEventListener('click',()=>{Object.keys(NOW).forEach(k=>{if(k!=='goal'&&k!=='mg')el(k).value=NOW[k]});calc()});
   calc();
 
   /* копирование протокола */
@@ -1192,5 +1433,6 @@ footer{font-size:12.5px;color:var(--muted);margin-top:40px}
   });
 })();
 </script>
+
 
 </body></html>
